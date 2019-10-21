@@ -1,0 +1,12 @@
+.creditos{
+	position:fixed;
+	bottom: 5;
+	left: 1vw;
+	/*width: 300px;*/
+	font-family: arial;
+	color:#859AF5;
+	font-size:11px;
+	text-shadow: 0 0 1px #1FDCF2, 0 0 1px blue; 
+}
+
+
