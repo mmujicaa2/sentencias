@@ -35,7 +35,6 @@
 
 
 
-
 		<script>
 
 		$(document).ready( function () {
@@ -68,11 +67,6 @@
 	
 	
 		</script>
-		
-
-
-
-	
 		
 				<?php
 					define('NUM_ITEMS_BY_PAGE', 15);
@@ -144,7 +138,7 @@
 								<input type="text" class="form-control form-group" name="descripcion" placeholder="Descripción" pattern='[a-zA-Z0-9]+{1,200}' required>
 								
 							
-   							 	<select id="materia" class="form-control mb-3" onchange="submateria();">
+   							 	<select id="materia" class="form-control mb-3" >
 														<option  name="Seleccione" value="0">Seleccione Materia</option>
 														<option  name="Civil" value="Civil">Civil</option>
 														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
@@ -163,13 +157,14 @@
 							  		<label class="custom-file-label" for="fileName" data-browse="Abrir">Seleccione Sentencia</label>
 								</div>
 							
+
 							
 					 <div class="modal-footer">
 				       		<button type="button bnt" class="btn btn-primary" >Enviar</button>
 				     </div>
 						</form>
 
-					<div id="resultadoinsert"></div>
+					<div id="resultadoins<!--  -->ert"></div>
 				      </div>
 				     
 				    </div>

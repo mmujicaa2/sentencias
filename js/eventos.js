@@ -43,6 +43,19 @@ $(".custom-file-input").on("change", function() {
 });
 
 
+ $("#materia").on("change", function(){
+  var materia = $("select#materia").val();
+     if (materia != "" ) {
+        $.post("buscarsubmateria.php", {bmateria: materia}, function(mensaje) {
+            $("#submateria").html(mensaje);
+         }); 
+     } 
+});
+
+
+
+
+
 });//fin
 
 
@@ -56,12 +69,7 @@ function limpiainput(){//Limpia inputs del modal de ingreso
 }
 
 
-function submateria() {
-     if (materia != "" ) {
-        $.post("buscarsubmateria.php", {bmateria: materia}, function(mensaje) {
-            $("#submateria").html(mensaje);
-         }); 
-     } 
-};
+
+
 
 
