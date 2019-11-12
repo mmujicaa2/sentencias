@@ -9,4 +9,8 @@
 	text-shadow: 0 0 1px #1FDCF2, 0 0 1px blue; 
 }
 
-
+.dataTables_wrapper .dataTables_filter  {
+  width:100%;
+  text-align:center;
+  
+}

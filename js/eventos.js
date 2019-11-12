@@ -1,17 +1,22 @@
 $(document).ready(function(){
-	
-	$('#btnfolio').click(function(){
-		$('#modal').css("visibility","visible");
-		$('#modal').modal();
-	});
+ 	
+
+$('#datepicker').datepicker({
+ 	language: 'es',
+ 	format: 'dd-mm-yyyy',
+ 	todayHighlight: true,
+    autoclose: true
+     });
+
+$("#datepicker2").datepicker({
+    format: "yyyy",
+    //viewMode: 'years', 
+    minViewMode: 2,
+    maxViewMode: 2,
+    autoclose: true,
+});
 
 
-	
-  filas_cebra('tbody tr:odd', 'impar'); 
-
-  function filas_cebra(selector, clase){  
-  jQuery(selector).removeClass(clase).addClass(clase);  
-} 
 
 $('#enviar').click(function(){
 	$.post( $("#ffolio").attr("action"),
@@ -23,48 +28,40 @@ $('#enviar').click(function(){
 
 	});
 
- 
-$('#datepicker').datepicker({
- 	todayBtn: 'linked',
- 	language: 'es',
-    autoclose: true
-     });
 
-$('#datepicker2').datepicker({
-		todayBtn: 'linked',
-		language: 'es',
-		autoclose: true
-        });
 
-$("#datepicker3").datepicker( {
- 	todayBtn: 'linked',
- 	format: "yyyy",
-    language: "es"
+$('.modal').on('hidden.bs.modal', function(){//limpia input  cuando cierra modal
+    $(this).find('form')[0].reset();
+     location.reload();
+});
+
+
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    
 });
 
 
 });//fin
 
+
+
 //funciones
 
-function limpiainput(){
+function limpiainput(){//Limpia inputs del modal de ingreso 
 	$("#ffolio :input").each(function(){
 		$(this).val('');
 	});
 }
 
 
-function buscar() {
-    var textoBusqueda = $("input#filtrar").val();
- 
-     if (textoBusqueda != "") {
-        $.post("buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
-            //$("#resultadoBusqueda").html(mensaje);
-            $("#resultadoBusqueda").text(mensaje);
+function submateria() {
+     if (materia != "" ) {
+        $.post("buscarsubmateria.php", {bmateria: materia}, function(mensaje) {
+            $("#submateria").html(mensaje);
          }); 
-     } else { 
-        $("#resultadoBusqueda").html('');
-        };
+     } 
 };
 
 

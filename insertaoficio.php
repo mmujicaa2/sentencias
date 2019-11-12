@@ -9,11 +9,15 @@
 		$tipo= $_POST['tipo'];
 
 		$qinserta="INSERT INTO oficios (letra,rit,anio,origen,destino,descripcion,tipo) VALUES('$letra','$rit','$anio','$origen','$destino','$descripcion','$tipo')";
-        if(mysqli_query($conn,$qinserta))
-         echo "Insercion satifactoria";
-        else
+        if(mysqli_query($conn,$qinserta)){
+         header("Location:index.php");
+
+        }
+        else{
         echo "Falló insercion";
         echo "<br>";
-    	echo $qinserta;
+        echo $qinserta;
+        }
+    	
  ?>
 

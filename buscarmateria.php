@@ -3,17 +3,15 @@
 require 'conexion/db.php';
 //Variable de búsqueda
 $consultaBusqueda = $_POST['valorBusqueda'];
-$fiBusqueda = $_POST['valorfiBusqueda'];
-$ffBusqueda = $_POST['valorffBusqueda'];
 
 //Filtro anti-XSS
-$caracteres_malos = array("<", ">", "\"", "'", "/", "<", ">", "'", "/");
-$caracteres_buenos = array("& lt;", "& gt;", "& quot;", "& #x27;", "& #x2F;", "& #060;", "& #062;", "& #039;", "& #047;");
-$consultaBusqueda = str_replace($caracteres_malos, $caracteres_buenos, $consultaBusqueda);
+//$caracteres_malos = array("<", ">", "\"", "'", "/", "<", ">", "'", "/");
+//$caracteres_buenos = array("& lt;", "& gt;", "& quot;", "& #x27;", "& #x2F;", "& #060;", "& #062;", "& #039;", "& #047;");
+//$consultaBusqueda = str_replace($caracteres_malos, $caracteres_buenos, $consultaBusqueda);
 
 //Variable vacía (para evitar los E_NOTICE)
 $mensaje = "";
-$query="SELECT * FROM OFICIOS ORDER BY id_oficio DESC";
+$query="SELECT * FROM materia ORDER BY materia DESC";
 
 
 //Comprueba si $consultaBusqueda está seteado
@@ -21,31 +19,10 @@ if (isset($consultaBusqueda)) {
 
 	if (isset($fiBusqueda)) {
 
-		$query="SELECT * FROM OFICIOS
-		WHERE fechaingreso between  STR_TO_DATE('$fiBusqueda 00:00:00', '%d-%m-%Y %H:%i:%S')
-		AND STR_TO_DATE('$ffBusqueda 23:59:59', '%d-%m-%Y %H:%i:%S')
-		AND (letra COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%' 
-		OR rit COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		OR anio COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		OR origen COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		OR destino COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		OR descripcion COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%')
-		";
+		$query="SELECT * FROM materia WHERE submateria LIKE '%$consultaBusqueda%')";
 		//$mensaje .= $query;
 	}
-	else{
-
-		$query="SELECT * FROM OFICIOS
-		WHERE letra COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%' 
-		OR rit COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		OR anio COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		OR origen COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		OR destino COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		OR descripcion COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-		";
-		//$mensaje .= $query;
-
-	}
+	
 	$consulta = mysqli_query($conn,$query);
 
 
@@ -79,7 +56,10 @@ if (isset($consultaBusqueda)) {
 			$fingreso = $resultados['fechaingreso'];
 			
 			//Output
-			$mensaje .= '<tr class="table  table-sm" >;
+			$mensaje .= '
+			
+			
+				<tr class="table  table-sm" >;
 				<td><p class="font-weight-bold">'.$folio."-".date("Y",strtotime($fechaingreso)).'</p></td>;
 			    <td>'.$letra.'</td>;
 			    <td>'.$rit.'</td>;

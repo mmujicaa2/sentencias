@@ -1,4 +1,5 @@
-<html class="fondo">
+<!DOCTYPE html>
+<html>
 	<meta charset="utf-8">
 	<head>
 		
@@ -26,7 +27,7 @@
 		<script src="js/eventos.js"></script>
 		
 				<?php
-					define('NUM_ITEMS_BY_PAGE', 10);
+					define('NUM_ITEMS_BY_PAGE', 15);
 					require 'conexion/db.php';
 					$query="SELECT * FROM OFICIOS ORDER BY id_oficio DESC";
 					
@@ -58,7 +59,7 @@
 						<div class="col-sm float-right">
 							<img src="images/usuario.png" alt=" usuario" class="float-right">	
 						</div>
-						</div>
+					</div>
 					<div class="clearfix"></div>
 				</div>
 				</div>
@@ -69,33 +70,33 @@
 					<button type="button"  class="btn btn-primary btn-lg col-lg" data-toggle="modal" data-target="#ingresaoficio">Generar N° oficio</button>
 				</div>
 
-				<div class="modal fade" id="ingresaoficio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade " id="ingresaoficio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      
-				      <div class="modal-header">
+				      <div class="modal-header  bg-light">
 							<h5>Ingrese datos del oficio</h5>
 				        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				        	  <span aria-hidden="true">&times;</span>
 				       		 </button>
 				      </div>
 				      
-				      <div class="modal-body">
+				      <div class="modal-body" id="inserta">
 				        <form id="ffolio" action="insertaoficio.php" method="post" >
 							
 								<input type="text" class="form-control form-group" name="letra" placeholder="Letra" pattern="[a-z,A-Z]{1}" maxlength="1">
 
-								<input type="text" class="form-control form-group" name="rit"  placeholder="RIT" pattern="[0-9]{1,3}"  required>
+								<input type="text" class="form-control form-group" name="rit"  placeholder="RIT" pattern="[0-9]{1,4}" maxlength="4" required>
 								
-						 		<div class="input-group input-group-append form-group">
-									<input  class="form-control form-group" name="anio"  id="datepicker3"/><span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>
+						 		<div class="input-group form-group">
+									<input  id="datepicker2" class="form-control form-group" name="anio"><span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>
 								</div>
 								
-								<input type="text" class="form-control form-group" name="origen" placeholder="Origen" pattern="[a-zA-Z0-9]{1,50}"  required>
+								<input type="text" class="form-control form-group" name="origen" placeholder="Origen" pattern='[a-zA-Z0-9]+{1,50}'  required>
 
-								<input type="text" class="form-control form-group" name="destino" placeholder="Destino" pattern="[a-zA-Z0-9]{1,50}" size="50" required>
+								<input type="text" class="form-control form-group" name="destino" placeholder="Destino" pattern='[a-zA-Z0-9]+{1,50}' required>
 								
-								<input type="text" class="form-control form-group" name="descripcion" placeholder="Descripción" pattern="[a-zA-Z0-9]{1,200}" size="50" required>
+								<input type="text" class="form-control form-group" name="descripcion" placeholder="Descripción" pattern='[a-zA-Z0-9]+{1,200}' required>
 								
 								<select name="tipo" class="form-control">
 									<option  name="oficio" value="Oficio">Oficio</option>
@@ -119,29 +120,33 @@
 			
 					<div class="form-group form-inline">
 					<div class="form-group">
-						<label for="filtrar">Buscar:</label>
-						<input name="filtrar" class="form-control" type="text"  id="filtrar" size="50" placeholder="Ingrese criterio de filtro" onKeyUp="buscar();">
+						<label for="filtrar" >Buscar:</label>
+						<input name="filtrar" class="ml-lg-2 form-control" type="text"  id="filtrar" size="50" placeholder="Ingrese criterio de filtro" onKeyUp="buscar();">
 					</div>
-					<div class="form-group">
-						<label for="datepicker">Entre fechas:</label>
-						<div class="input-group ">
-						 <div class="input-group-append">
-							<input class="form-control form-group" id="datepicker" width="50" size="10"/> <span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>
-  						 </div>	
-						</div>
-						<label for="datepicker2">y</label>
-						<div class="input-group ">
-								<input class="form-control form-group" id="datepicker2" width="50" size="10"/><span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>
-  							</div>
-  						</div>								
+
+					<div class="form-group ml-lg-2">
+						<label for="datepicker ">Entre fechas:</label>
+						    <div class=" ml-lg-2 input-daterange input-group" id="datepicker" >
+					        
+					        <input type="text" class="input-sm form-control" id="finicio" size="8" onchange="buscar();" ><span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>
+					        <label class='ml-lg-2'>y</label>
+					        
+					        <input type="text" class=" ml-lg-2 input-sm form-control" id="ffinal" size="8" onchange="buscar();" ><span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>
+    						</div>
+  					</div>								
+					
 						<img src="images/excel.png" class="float-right">
-						</div>
+					
+					</div>
 						<div class="clearfix"></div>
 						
 			
 			
-			</div>
-
+			</div><!-- cierre div -->
+		
+			
+		<div id="tabladatos">
+		
 		<table class="table table-hover table-striped container table-sm">  
 		  <thead>  
 		    <tr class="active table-info">  
@@ -152,18 +157,106 @@
 		      <th>Origen</th>
 		      <th>Destino</th>
 		      <th>Descripción</th>
+		      <th>F.Ingreso</th>
 		      <th>Usuario</th>
 		      <th>Doc.</th>
 			</tr>  
 		  </thead> 
 
-</div>
+		   <tbody>  
+		
+			<?php
 
 
-<div class="creditos">
-	Desarrollado por Marcelo Mujica
-</div>
+			if ($num_total_rows > 0) {
+			    $page = false;
+			 
+			    //examino la pagina a mostrar y el inicio del registro a mostrar
+			    if (isset($_GET["page"])) {
+			        $page = $_GET["page"];
+			    }
+			 
+			    if (!$page) {
+			        $start = 0;
+			        $page = 1;
+			    } else {
+			        $start = ($page - 1) * NUM_ITEMS_BY_PAGE;
+			    }
+			    //calculo el total de paginas
+			    $total_pages = ceil($num_total_rows / NUM_ITEMS_BY_PAGE);
 
-		</body>
+			    $result = $conn->query(
+			        'SELECT * FROM OFICIOS ORDER BY id_oficio DESC LIMIT '.$start.', '.NUM_ITEMS_BY_PAGE);
+
+			 
+			    if ($result->num_rows > 0) {
+			        echo '<tr class="table  table-sm">';
+			        while ($row = $result->fetch_assoc()) {
+			            echo '<td><p class="font-weight-bold">'.$row['id_oficio']."-".date("Y",strtotime($row['fechaingreso'])).'</td>';
+			            echo '<td>'.$row['letra'].'</td>';
+			            echo '<td>'.$row['rit'].'</td>';
+			            echo '<td>'.$row['anio'].'</td>';
+			            echo '<td>'.$row['origen'].'</td>';
+			            echo '<td>'.$row['destino'].'</td>';
+			            echo '<td>'.$row['descripcion'].'</td>';
+			           	echo '<td>'.$row['fechaingreso'].'</td>';
+			            echo '<td>'.$row['usuario'].'</td>';
+			            echo '<td>'.$row['doc'].'</td>';
+			        	echo '</tr>';    
+			        }
+			    
+			    }
+		echo "</tbody>"; //cierre tbody
+		echo "</table>";
+				
+    			echo '<nav>';
+			    echo '<ul class="pagination justify-content-center">';
+			 
+			    if ($total_pages > 1) {
+			        if ($page != 1) {
+			            echo '<li class="page-item"><a class="page-link" href="index.php?page='.($page-1).'"><span aria-hidden="true">&laquo;</span></a></li>';
+			        }
+			 
+			        for ($i=1;$i<=$total_pages;$i++) {
+			            if ($page == $i) {
+			                echo '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
+			            } else {
+			                echo '<li class="page-item"><a class="page-link" href="index.php?page='.$i.'">'.$i.'</a></li>';
+			            }
+			        }
+			 
+			        if ($page != $total_pages) {
+			            echo '<li class="page-item"><a class="page-link" href="index.php?page='.($page+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
+			        }
+			    }
+				
+				echo '</ul>';
+				echo '</nav>'; 
+			}
+
+			?>
+			
 	
+		</div>
+
+			<table class="table table-hover table-striped container table-sm ">  
+			
+			  <thead id="tablabusqueda" style="display:none">  
+			    <tr class="active table-info">  
+			      <th>N°</th>  
+			      <th>Letra</th>  
+			      <th>RIT</th>  
+			      <th>Año</th>
+			      <th>Origen</th>
+			      <th>Destino</th>
+			      <th>Descripción</th>
+			      <th>F.ingreso</th>
+			      <th>Usuario</th>
+			      <th>Doc.</th>
+				</tr>  
+			  </thead> 
+					<tbody id="resultadoBusqueda">  
+				</tbody>
+			</table>
+	</body>		
 </html>
