@@ -1,5 +1,6 @@
 $(document).ready(function(){
  	
+$('select').selectpicker();
 
 $('#datepicker').datepicker({
  	language: 'es',
@@ -52,6 +53,13 @@ $(".custom-file-input").on("change", function() {
      } 
 });
 
+$('#select').on("change", function(){
+ alert('You must select at least 3 option.');
+if ($('#select').val().length < 3) {
+    alert('You must select at least 3 option.');
+}
+
+
 
 
 
@@ -68,6 +76,11 @@ function limpiainput(){//Limpia inputs del modal de ingreso
 	});
 }
 
+function selectMinistro(){
+ $.post("buscarministo.php", {bmateria: materia}, function(mensaje) {
+            $("#submateria").html(mensaje);
+         }); 
+}
 
 
 

@@ -3,28 +3,38 @@
 	<meta charset="utf-8">
 	<head>
 		
+
+
+<!-- Fuking Popper previous Jquery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+<!-- Jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+		<!-- Multiselect Ministros-->
+
+
 
 		<!--Calendario-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
-		
+
+<!-- Viewport -->	
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		
-		
+
+<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+
+<!-- Datatables -->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-  
 		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-
-		</style>
-
 
 	<!--Estilos CSS-->
 		<link rel="stylesheet" href="css/estilo.css">
@@ -33,8 +43,18 @@
 		<script src="js/eventos.js"></script>
 
 
+<!--Bootstrap Multiselect CSS y JS y lenguajes-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.js" integrity="sha256-tjUcUjAb8ZD4wFw6K6gB1WGIl7tQRzBFXIv909raSZo=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
 
 
+
+<!-- Inicializa Datatables -->
 		<script>
 
 		$(document).ready( function () {
@@ -134,20 +154,36 @@
 									<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="datepicker2"></i></span>
 								</div>
 
-								
-								<input type="text" class="form-control form-group" name="descripcion" placeholder="Descripción" pattern='[a-zA-Z0-9]+{1,200}' required>
-								
-							
-   							 	<select id="materia" class="form-control mb-3" >
-														<option  name="Seleccione" value="0">Seleccione Materia</option>
-														<option  name="Civil" value="Civil">Civil</option>
-														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
-														<option name="Penal" value="Penal">Penal</option>
-														<option name="Laboral" value="Laboral">Laboral</option>
-														<option name="Familia" value="Familia">Familia</option>
-														<option name="Proteccion" value="Proteccion">Protección</option>
-														<option name="jlp" value="jlp">Juzgado Policia Local</option>
-											</select>
+
+<!-- Aca va un select con los minitros -->
+
+
+<select id="slMinistro" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3"  title="Seleccione ministros" data-lang="es_ES" required>
+									<!-- Carga select de tabla ministro -->
+									<?php
+									require 'conexion/db.php';
+									$mensaje = "";
+
+											$ministros="SELECT * FROM ministro";
+											//echo $query;
+											$query= mysqli_query($conn,$ministros);
+
+											while($campo = mysqli_fetch_array($query)) {
+												$idMinistro = $campo['id_ministro'];
+												$nombreMinistro = $campo['nombre_ministro'];
+												$apMinistro= $campo['apaterno_ministro'];
+												//$amMinistro = $campo['amaterno_ministro'];
+
+												echo '<option value="'.$idMinistro.'">'.$nombreMinistro.'  '.$apMinistro.'</option>';
+
+											};//Fin while $resultados
+
+									?>
+
+</select>
+
+
+
 
 								<div id="submateria"></div>
 								
@@ -174,6 +210,8 @@
 			
 			</div><!-- cierre div -->
 		
+<!-- Carga de datos en la tabla -->
+
 		<table  id="tabladatos" class="table table-hover table-striped container table-sm order-column compact">  
 		  <thead>  
 		    <tr class="active table-info">  
