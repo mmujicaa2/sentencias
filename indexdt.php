@@ -12,7 +12,11 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-		<!-- Multiselect Ministros-->
+		<!-- Fileinput test krajee-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.js" integrity="sha256-gBMxvh5TatVGO6+k+QUIsmB2hoDh9C4QDmARBh1fLt8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.js" integrity="sha256-JlMWwWbsL9wOJJPB2+JQyNfNwb+bY/MxdcZw0zdJN2g=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.min.js" integrity="sha256-3pkal0XIuuGf9IFeT+xXPQJBNIeUC8iREOoRVGE5/Pc=" crossorigin="anonymous"></script>
 
 
 
@@ -158,36 +162,49 @@
 <!-- Aca va un select con los minitros -->
 
 
-<select id="slMinistro" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3"  title="Seleccione ministros" data-lang="es_ES" required>
-									<!-- Carga select de tabla ministro -->
-									<?php
-									require 'conexion/db.php';
-									$mensaje = "";
+	<select id="slMinistro" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3"  title="Seleccione ministros" data-lang="es_ES" required>
+			<!-- Carga select de tabla ministro -->
+			<?php
+			require 'conexion/db.php';
+			$mensaje = "";
 
-											$ministros="SELECT * FROM ministro";
-											//echo $query;
-											$query= mysqli_query($conn,$ministros);
+					$ministros="SELECT * FROM ministro";
+					//echo $query;
+					$query= mysqli_query($conn,$ministros);
 
-											while($campo = mysqli_fetch_array($query)) {
-												$idMinistro = $campo['id_ministro'];
-												$nombreMinistro = $campo['nombre_ministro'];
-												$apMinistro= $campo['apaterno_ministro'];
-												//$amMinistro = $campo['amaterno_ministro'];
+					while($campo = mysqli_fetch_array($query)) {
+						$idMinistro = $campo['id_ministro'];
+						$nombreMinistro = $campo['nombre_ministro'];
+						$apMinistro= $campo['apaterno_ministro'];
+						//$amMinistro = $campo['amaterno_ministro'];
 
-												echo '<option value="'.$idMinistro.'">'.$nombreMinistro.'  '.$apMinistro.'</option>';
+						echo '<option value="'.$idMinistro.'">'.$nombreMinistro.'  '.$apMinistro.'</option>';
 
-											};//Fin while $resultados
+					};//Fin while $resultados
 
-									?>
+			?>						
 
-</select>
+	</select> <!-- fin select ministros -->
+
+		<select id="materia" class="form-control mb-3" >
+														<option  name="Seleccione" value="0">Seleccione Materia</option>
+														<option  name="Civil" value="Civil">Civil</option>
+														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
+														<option name="Penal" value="Penal">Penal</option>
+														<option name="Laboral" value="Laboral">Laboral</option>
+														<option name="Familia" value="Familia">Familia</option>
+														<option name="Proteccion" value="Proteccion">Protección</option>
+														<option name="jlp" value="jlp">Juzgado Policia Local</option>
+											</select>
 
 
-
-
-								<div id="submateria"></div>
+								<div id="submateria"></div> <!-- Carga el select con las submaterias -->
 								
+<!-- Prueba file input kranjee -->
 
+					<input id="input-b2" name="input-b2" type="file" class="file" data-show-preview="false">
+<!-- fin pruiena file unput -->
+								
 								<div class="custom-file mb-3" id="customFile" lang="es">
 							  		<input type="file" class="custom-file-input" id="fileName" required>
 							  		<label class="custom-file-label" for="fileName" data-browse="Abrir">Seleccione Sentencia</label>
@@ -200,7 +217,7 @@
 				     </div>
 						</form>
 
-					<div id="resultadoins<!--  -->ert"></div>
+					<div id="resultadoinsert"></div> <!-- Eliminar -->
 				      </div>
 				     
 				    </div>

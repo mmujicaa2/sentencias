@@ -53,13 +53,13 @@ $(".custom-file-input").on("change", function() {
      } 
 });
 
+//Compribar si se sleecionaron los 3 ministros, no terminado, revisar
 $('#select').on("change", function(){
  alert('You must select at least 3 option.');
 if ($('#select').val().length < 3) {
     alert('You must select at least 3 option.');
 }
-
-
+});
 
 
 
