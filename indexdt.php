@@ -13,10 +13,12 @@
 
 
 		<!-- Fileinput test krajee-->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.js" integrity="sha256-gBMxvh5TatVGO6+k+QUIsmB2hoDh9C4QDmARBh1fLt8=" crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
+		
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.js" integrity="sha256-JlMWwWbsL9wOJJPB2+JQyNfNwb+bY/MxdcZw0zdJN2g=" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.min.js" integrity="sha256-3pkal0XIuuGf9IFeT+xXPQJBNIeUC8iREOoRVGE5/Pc=" crossorigin="anonymous"></script>
 
 
 
@@ -200,16 +202,25 @@
 
 								<div id="submateria"></div> <!-- Carga el select con las submaterias -->
 								
-<!-- Prueba file input kranjee -->
+<!-- Prueba file input krajee -->
+<script>
+$("#input-b2").fileinput({
+    language: "es",
+    uploadUrl: "/file-upload-batch/2",
+    allowedFileExtensions: ["jpg", "png", "gif"]
+});
+</script>
 
 					<input id="input-b2" name="input-b2" type="file" class="file" data-show-preview="false">
-<!-- fin pruiena file unput -->
-								
+<!-- fin prueba file unput -->
+
+<!-- Comentado para probar funcionamient de krajee
+
 								<div class="custom-file mb-3" id="customFile" lang="es">
 							  		<input type="file" class="custom-file-input" id="fileName" required>
 							  		<label class="custom-file-label" for="fileName" data-browse="Abrir">Seleccione Sentencia</label>
 								</div>
-							
+ -->						
 
 							
 					 <div class="modal-footer">
