@@ -5,20 +5,22 @@
 		
 
 
-<!-- Fuking Popper previous Jquery-->
+<!-- Fucking Popper previous Jquery-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
 <!-- Jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-		<!-- Fileinput test krajee-->
+<!-- Fileinput test krajee-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.js" integrity="sha256-gBMxvh5TatVGO6+k+QUIsmB2hoDh9C4QDmARBh1fLt8=" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.js" integrity="sha256-JlMWwWbsL9wOJJPB2+JQyNfNwb+bY/MxdcZw0zdJN2g=" crossorigin="anonymous"></script>
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
 		
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.js" integrity="sha256-JlMWwWbsL9wOJJPB2+JQyNfNwb+bY/MxdcZw0zdJN2g=" crossorigin="anonymous"></script>
+	
 
 
 
@@ -59,6 +61,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
 
 
+<!-- Inicializa krajee File input -->
+
+
+<!--  Inicaliza krajee desde script pero mejor desde propiedades de etiqueta
+<script>
+$('#input-b2').fileinput({
+    language: 'es',
+    showRemove:false,
+    showUpload:false,
+    uploadUrl: "/file-upload-batch/2",
+    allowedFileExtensions: ["jpg", "png", "gif"]
+});
+
+</script>
+ -->
+ 
 
 <!-- Inicializa Datatables -->
 		<script>
@@ -203,15 +221,9 @@
 		<div id="submateria"></div> <!-- Carga el select con las submaterias -->
 								
 <!-- Prueba file input krajee -->
-<script>
-$("#input-b2").fileinput({
-    language: "es",
-    uploadUrl: "/file-upload-batch/2",
-    allowedFileExtensions: ["jpg", "png", "gif"]
-});
-</script>
 
-					<input id="input-b2" name="input-b2" type="file" class="file" data-show-preview="false">
+
+					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false">
 <!-- fin prueba file unput -->
 
 <!-- Comentado para probar funcionamient de krajee

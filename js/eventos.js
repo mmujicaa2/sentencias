@@ -1,5 +1,6 @@
 $(document).ready(function(){
  	
+    
 $('select').selectpicker();
 
 $('#datepicker').datepicker({
