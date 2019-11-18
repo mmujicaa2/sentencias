@@ -206,8 +206,8 @@ $('#input-b2').fileinput({
 
 	</select> <!-- fin select ministros -->
 
-		<select id="materia" class="form-control mb-3" >
-														<option  name="Seleccione" value="0">Seleccione Materia</option>
+		<select id="materia" class="form-control mb-3" required >
+														<option  name="" value=""></option>
 														<option  name="Civil" value="Civil">Civil</option>
 														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
 														<option name="Penal" value="Penal">Penal</option>
@@ -223,7 +223,7 @@ $('#input-b2').fileinput({
 <!-- Prueba file input krajee -->
 
 
-					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false">
+					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true">
 <!-- fin prueba file unput -->
 
 <!-- Comentado para probar funcionamient de krajee
