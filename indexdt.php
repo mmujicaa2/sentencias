@@ -200,7 +200,7 @@
 											</select>
 
 
-								<div id="submateria"></div> <!-- Carga el select con las submaterias -->
+		<div id="submateria"></div> <!-- Carga el select con las submaterias -->
 								
 <!-- Prueba file input krajee -->
 <script>
