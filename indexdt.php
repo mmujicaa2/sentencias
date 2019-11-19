@@ -255,15 +255,15 @@ $('#input-b2').fileinput({
 		<table  id="tabladatos" class="table table-hover table-striped container table-sm order-column compact">  
 		  <thead>  
 		    <tr class="active table-info">  
-		      <th>N°</th>  
-		      <th>Letra</th>  
+		      <th>F.Ingreso</th>
 		      <th>RIT</th>  
 		      <th>Año</th>
-		      <th>Origen</th>
-		      <th>Destino</th>
-		      <th>Descripción</th>
-		      <th>F.Ingreso</th>
-		      <th>Usuario</th>
+		      <th>Materia</th>
+		      <th>Submateria</th>
+		      <th>Ministro1</th>
+		      <th>Ministro2</th>
+		      <th>Ministro3</th>
+		      
 		      <th>Doc.</th>
 			</tr>  
 		  </thead> 
@@ -277,24 +277,23 @@ $('#input-b2').fileinput({
 			    $page = false;
 			 
 			    
-			    $result = $conn->query('SELECT * FROM sentencia ORDER BY id_oficio DESC');
+			    $result = $conn->query('SELECT * FROM sentencia ORDER BY fechaingreso DESC');
 
 			 
 			    if ($result->num_rows > 0) {
 			        echo '<tr class="table  table-sm">';
 			        while ($row = $result->fetch_assoc()) {
-			            echo '<td><p class="font-weight-bold">'.$row['id_oficio']."-".date("Y",strtotime($row['fechaingreso'])).'</td>';
-			            echo '<td>'.$row['letra'].'</td>';
+			            echo '<td>'.$row['fechaingreso'].'</td>';
 			            echo '<td>'.$row['rit'].'</td>';
 			            echo '<td>'.$row['anio'].'</td>';
-			            echo '<td>'.$row['origen'].'</td>';
-			            echo '<td>'.$row['destino'].'</td>';
-			            echo '<td>'.$row['descripcion'].'</td>';
-			           	echo '<td>'.$row['fechaingreso'].'</td>';
-			            echo '<td>'.$row['usuario'].'</td>';
+			            echo '<td>'.$row['materia'].'</td>';
+			            echo '<td>'.$row['submateria'].'</td>';
+				        echo '<td>'.$row['ministro1'].'</td>';
+				        echo '<td>'.$row['ministro2'].'</td>';
+				        echo '<td>'.$row['ministro3'].'</td>';
 			            echo '<td>'.$row['documento'].'</td>';
 			        	echo '</tr>';    
-			        }
+				        }
 			    
 			    }
 		echo "</tbody>"; //cierre tbody
