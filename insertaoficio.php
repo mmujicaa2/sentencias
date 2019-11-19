@@ -1,9 +1,9 @@
 <?php 
  include_once('conexion/db.php');
-        $letra = $_POST['letra'];
         $rit= $_POST['rit'];
         $anio= $_POST['anio'];
-        $origen= $_POST['origen'];
+        
+        $= $_POST['origen'];
         $destino= $_POST['destino'];
         $descripcion= $_POST['descripcion'];
 		$tipo= $_POST['tipo'];

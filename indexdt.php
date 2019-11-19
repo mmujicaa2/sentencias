@@ -6,13 +6,13 @@
 
 
 <!-- Fucking Popper previous Jquery-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
 <!-- Jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-<!-- Fileinput test krajee-->
+<!-- Fileinput  krajee-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.js" integrity="sha256-gBMxvh5TatVGO6+k+QUIsmB2hoDh9C4QDmARBh1fLt8=" crossorigin="anonymous"></script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.js" integrity="sha256-JlMWwWbsL9wOJJPB2+JQyNfNwb+bY/MxdcZw0zdJN2g=" crossorigin="anonymous"></script>
@@ -20,11 +20,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
 		
 
-	
-
-
-
-		<!--Calendario-->
+<!--Calendario-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
@@ -44,21 +40,21 @@
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
-	<!--Estilos CSS-->
+<!--Estilos CSS-->
 		<link rel="stylesheet" href="css/estilo.css">
 
-		<!--Scripts-->
+<!--Scripts-->
 		<script src="js/eventos.js"></script>
 
 
 <!--Bootstrap Multiselect CSS y JS y lenguajes-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.js" integrity="sha256-tjUcUjAb8ZD4wFw6K6gB1WGIl7tQRzBFXIv909raSZo=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.js" integrity="sha256-tjUcUjAb8ZD4wFw6K6gB1WGIl7tQRzBFXIv909raSZo=" crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
 
 
 <!-- Inicializa krajee File input -->
@@ -168,7 +164,9 @@ $('#input-b2').fileinput({
 				      </div>
 				      
 				      <div class="modal-body" id="inserta">
-				        <form id="ffolio" action="ingsentencia.php" method="post" >
+			
+		
+		<form id="ffolio" action="ingsentencia.php" method="post" >
 							
 								
 								<input type="text" class="form-control form-group" name="rit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" required>
@@ -182,31 +180,32 @@ $('#input-b2').fileinput({
 <!-- Aca va un select con los minitros -->
 
 
-	<select id="slMinistro" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3"  title="Seleccione ministros" data-lang="es_ES" required>
-			<!-- Carga select de tabla ministro -->
-			<?php
-			require 'conexion/db.php';
-			$mensaje = "";
+				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3"  title="Seleccione ministros" data-lang="es_ES" required>
+						<!-- Carga select de tabla ministro -->
+						<?php
+						require 'conexion/db.php';
+						$mensaje = "";
 
-					$ministros="SELECT * FROM ministro";
-					//echo $query;
-					$query= mysqli_query($conn,$ministros);
+								$ministros="SELECT * FROM ministro";
+								//echo $query;
+								$query= mysqli_query($conn,$ministros);
 
-					while($campo = mysqli_fetch_array($query)) {
-						$idMinistro = $campo['id_ministro'];
-						$nombreMinistro = $campo['nombre_ministro'];
-						$apMinistro= $campo['apaterno_ministro'];
-						//$amMinistro = $campo['amaterno_ministro'];
+								while($campo = mysqli_fetch_array($query)) {
+									$idMinistro = $campo['id_ministro'];
+									$nombreMinistro = $campo['nombre_ministro'];
+									$apMinistro= $campo['apaterno_ministro'];
+									//$amMinistro = $campo['amaterno_ministro'];
 
-						echo '<option value="'.$idMinistro.'">'.$nombreMinistro.'  '.$apMinistro.'</option>';
+									echo '<option value="'.$nombreMinistro.'">'.$nombreMinistro.'</option>';
 
-					};//Fin while $resultados
+								};//Fin while $resultados
 
-			?>						
+						?>						
 
-	</select> <!-- fin select ministros -->
+					</select> <!-- fin select ministros -->
 
-		<select id="materia" class="form-control mb-3" required >
+
+					<select name="materia" id="materia" class="form-control mb-3" required >
 														<option  name="" value=""></option>
 														<option  name="Civil" value="Civil">Civil</option>
 														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
@@ -215,10 +214,10 @@ $('#input-b2').fileinput({
 														<option name="Familia" value="Familia">Familia</option>
 														<option name="Proteccion" value="Proteccion">Protección</option>
 														<option name="jlp" value="jlp">Juzgado Policia Local</option>
-											</select>
+					</select>
 
 
-		<div id="submateria"></div> <!-- Carga el select con las submaterias -->
+					<div  id="submateria"></div> <!-- Carga el select con las submaterias -->
 								
 <!-- Prueba file input krajee -->
 
@@ -239,6 +238,7 @@ $('#input-b2').fileinput({
 				       		<button type="button bnt" class="btn btn-primary" >Enviar</button>
 				     </div>
 						</form>
+
 
 					<div id="resultadoinsert"></div> <!-- Eliminar -->
 				      </div>
