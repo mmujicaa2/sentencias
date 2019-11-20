@@ -180,7 +180,7 @@ $('#input-b2').fileinput({
 <!-- Aca va un select con los minitros -->
 
 
-				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3"  title="Seleccione ministros" data-lang="es_ES" required>
+				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="5" title="Seleccione ministros" data-lang="es_ES" required>
 						<!-- Carga select de tabla ministro -->
 						<?php
 						require 'conexion/db.php';
@@ -222,8 +222,8 @@ $('#input-b2').fileinput({
 <!-- Prueba file input krajee -->
 
 
-					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true">
-<!-- fin prueba file unput -->
+					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true" data-allowed-file-extensions='["doc", "docx","pdf"]'>
+<!-- fin prueba file input -->
 
 <!-- Comentado para probar funcionamient de krajee
 
@@ -254,7 +254,7 @@ $('#input-b2').fileinput({
 
 		<table  id="tabladatos" class="table table-hover table-striped container table-sm order-column compact">  
 		  <thead>  
-		    <tr class="active table-info">  
+		    <tr class="active table-primary">  
 		      <th>F.Ingreso</th>
 		      <th>RIT</th>  
 		      <th>Año</th>
@@ -283,7 +283,7 @@ $('#input-b2').fileinput({
 			    if ($result->num_rows > 0) {
 			        echo '<tr class="table  table-sm">';
 			        while ($row = $result->fetch_assoc()) {
-			            echo '<td>'.$row['fechaingreso'].'</td>';
+			            echo '<td>'.strftime("%d-%m-%Y", strtotime($row['fechaingreso'])).'</td>';
 			            echo '<td>'.$row['rit'].'</td>';
 			            echo '<td>'.$row['anio'].'</td>';
 			            echo '<td>'.$row['materia'].'</td>';
@@ -291,7 +291,8 @@ $('#input-b2').fileinput({
 				        echo '<td>'.$row['ministro1'].'</td>';
 				        echo '<td>'.$row['ministro2'].'</td>';
 				        echo '<td>'.$row['ministro3'].'</td>';
-			            echo '<td>'.$row['documento'].'</td>';
+			            echo '<td><img src="images/doc.svg" style="width:20px"/></td>';
+			            //echo '<td>'.$row['documento'].'</td>';
 			        	echo '</tr>';    
 				        }
 			    
