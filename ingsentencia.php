@@ -5,29 +5,13 @@
         $ministro=$_POST['slMinistro'];
         $materia=$_POST['materia'];
         $submateria=$_POST['submateria'];
-        $documento= $_POST['input-b2'];
+        //$documento= $_POST['input-b2'];
 
+        $documento=$_FILES['input-b2']['name'];
+        $tmpdoc=$_FILES['input-b2']['tmp_name'];
+        $rutadocumentos="../documentos"."/".$documento;
 
-/*
-        foreach ($_POST['slMinistro'] as $ministro)
-{
-        print "Ministro!!!! ..   $ministro<br/>";
-}
-*/
-
-
-		$qinserta="INSERT INTO sentencia (rit,anio,ministro1,ministro2,ministro3,materia,submateria,documento) VALUES('$rit','$anio','$ministro[0]','$ministro[1]','$ministro[2]','$materia','$submateria','$documento')";
-
-        //echo $qinserta;
-        
-        if(mysqli_query($conn,$qinserta)){
-             header("Location:indexdt.php");
-        }
-        else{
-            echo "Falló insercion";
-            echo "<br>";
-            echo $qinserta;
-        }
+        echo $tmpdoc;
     	
  ?>
 

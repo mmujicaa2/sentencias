@@ -166,7 +166,7 @@ $('#input-b2').fileinput({
 				      <div class="modal-body" id="inserta">
 			
 		
-		<form id="ffolio" action="ingsentencia.php" method="post" >
+		<form id="ffolio" action="ingsentencia.php" method="post" enctype="multipart/form-data" >
 							
 								
 								<input type="text" class="form-control form-group" name="rit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" required>
@@ -235,7 +235,7 @@ $('#input-b2').fileinput({
 
 							
 					 <div class="modal-footer">
-				       		<button type="button bnt" class="btn btn-primary" >Enviar</button>
+				       		<button type="button bnt" class="btn btn-primary" onclick="subeDatos();">Enviar</button>
 				     </div>
 						</form>
 
@@ -291,7 +291,7 @@ $('#input-b2').fileinput({
 				        echo '<td>'.$row['ministro1'].'</td>';
 				        echo '<td>'.$row['ministro2'].'</td>';
 				        echo '<td>'.$row['ministro3'].'</td>';
-			            echo '<td><img src="images/doc.svg" style="width:20px"/></td>';
+			            echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/doc.svg" style="width:20px"/></a></td>';
 			            //echo '<td>'.$row['documento'].'</td>';
 			        	echo '</tr>';    
 				        }

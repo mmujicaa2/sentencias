@@ -63,26 +63,6 @@ if ($('#select').val().length < 3) {
 });
 
 
-//test para ver si se almacenan los 3 ministros en variablea a enviar por form
-/*
-$('#slMinistro').on("change", function(){
-    console.log('aaazz');
-if ($('#slMinistro[0]').val()) {
-    alert(' el select 1 tiene dato');
-}
-if ($('#slMinistro[1]').val()) {
-    alert(' el select 2 tiene  dato');
-}
-if ($('#slMinistro[2]').val()) {
-    alert(' el select 3 tiene  dato');
-
-}
-});
-
-*/
-
-
-
 
 
 
@@ -105,6 +85,25 @@ function selectMinistro(){
 }
 
 
+/*function subeDatos(){
+//console.log("aaaa");
 
+    var parametros= new formData($("ffolio")[0]); //instancia de datos del formulario
+    $.ajax({
+        data: parametros,
+        url: "ingsentencia.php",
+        type: "POST",
+        contentType: false,
+        processData: false,
+        beforesend: function(){
+
+        },
+        success: function(response){
+            alert(response);
+        }
+
+    });
+
+}*/
 
 
