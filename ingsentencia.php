@@ -7,11 +7,36 @@
         $submateria=$_POST['submateria'];
         //$documento= $_POST['input-b2'];
 
-        $documento=$_FILES['input-b2']['name'];
-        $tmpdoc=$_FILES['input-b2']['tmp_name'];
-        $rutadocumentos="../documentos"."/".$documento;
+        //Subir archivo a carpeta
+        $directorio = 'documentos/';
+        $nombredoc=$_FILES['input-b2']['name'];
+        $tempdoc=$_FILES['input-b2']['tmp_name'];
+        $prefijodoc=date("d.m.y-"); 
 
-        echo $tmpdoc;
+
+      if ($_FILES['input-b2']) {
+
+            if(move_uploaded_file($tempdoc, $directorio.$prefijodoc.$nombredoc))
+                    {
+                          $qinserta="INSERT INTO sentencia (rit,anio,ministro1,ministro2,ministro3,materia,submateria,documento) 
+                        VALUES('$rit','$anio','$ministro[0]','$ministro[1]','$ministro[2]','$materia','$submateria','$prefijodoc$nombredoc')";
+                            
+                            echo $qinserta;
+
+                        if(mysqli_query($conn,$qinserta)){
+                                header("Location:indexdt.php");
+                            }
+                            else{
+                                echo "Falló insercion, intentelo denuevo o contactese con el Webmaster mmujica@pjud.cl";
+                            }
+
+                    }
+                    else
+                    {
+                      echo 'Error en la carga de archivo, intentelo denuevo o contactese con el Webmaster mmujica@pjud.cl';
+                      header("Location:indexdt.php");
+                    }
+      }
     	
  ?>
 
