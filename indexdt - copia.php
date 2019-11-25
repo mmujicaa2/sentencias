@@ -57,7 +57,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
 
 
-<!-- Inicializa krajee File input----inicializado en el input -->
+<!-- Inicializa krajee File input -->
 
 
 <!--  Inicaliza krajee desde script pero mejor desde propiedades de etiqueta
@@ -134,8 +134,8 @@ $('#input-b2').fileinput({
 							<img src="images/salir2.png" alt="salir">
 						</div>
 						
-						<div class="col-lg-6">
-							<h2>Mantenedor de sentencias</h2>
+						<div class="col-lg">
+							<h2>Búsqueda de sentencias</h2>
 						</div>
 						
 						<div class="col-sm float-right">
@@ -145,10 +145,7 @@ $('#input-b2').fileinput({
 					<div class="clearfix"></div>
 				</div>
 				</div>
-			<!-- Comienzo mantenedores -->
-
-
-<!--  Ingreso sentencias-->
+				
 			<div class="container">
 				
 				<div class="form-group">
@@ -169,7 +166,7 @@ $('#input-b2').fileinput({
 				      <div class="modal-body" id="inserta">
 			
 		
-				<form id="ffolio" action="ingsentencia.php" method="post" enctype="multipart/form-data" >
+		<form id="ffolio" action="ingsentencia.php" method="post" enctype="multipart/form-data" >
 							
 								
 								<input type="text" class="form-control form-group" name="rit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" required>
@@ -180,7 +177,7 @@ $('#input-b2').fileinput({
 								</div>
 
 
-				<!-- Aca va un select con los minitros -->
+<!-- Aca va un select con los minitros -->
 
 
 				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="5" title="Seleccione ministros" data-lang="es_ES" required>
@@ -228,11 +225,17 @@ $('#input-b2').fileinput({
 					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true" data-allowed-file-extensions='["doc", "docx","pdf"]'>
 <!-- fin prueba file input -->
 
-						
+<!-- Comentado para probar funcionamient de krajee
+
+								<div class="custom-file mb-3" id="customFile" lang="es">
+							  		<input type="file" class="custom-file-input" id="fileName" required>
+							  		<label class="custom-file-label" for="fileName" data-browse="Abrir">Seleccione Sentencia</label>
+								</div>
+ -->						
 
 							
 					 <div class="modal-footer">
-				       		<button type="button bnt" class="btn btn-primary" onclick="subeDatos();">Agregar</button>
+				       		<button type="button bnt" class="btn btn-primary" onclick="subeDatos();">Enviar</button>
 				     </div>
 						</form>
 
@@ -246,10 +249,6 @@ $('#input-b2').fileinput({
 			
 			
 			</div><!-- cierre div -->
-
-			<!-- Cierre ingreso de sentencias  -->
-
-
 		
 <!-- Carga de datos en la tabla -->
 
@@ -264,8 +263,8 @@ $('#input-b2').fileinput({
 		      <th>Ministro1</th>
 		      <th>Ministro2</th>
 		      <th>Ministro3</th>
-		      <td><img src="images/editar_titulo.svg" style="width:20px"/></td>
-		      <td><img src="images/borrar_titulo.svg" style="width:30px"/></td>
+		      
+		      <th>Doc.</th>
 			</tr>  
 		  </thead> 
 
@@ -292,14 +291,7 @@ $('#input-b2').fileinput({
 				        echo '<td>'.$row['ministro1'].'</td>';
 				        echo '<td>'.$row['ministro2'].'</td>';
 				        echo '<td>'.$row['ministro3'].'</td>';
-			            echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/editar.svg" style="width:20px"/></a></td>';
-			            
-			            echo '<td ><a  href="#"  data-href="delsentencia.php?idfolio='.$row['id_oficio'].'"  class="eliminar" data-toggle="modal" data-target="#confirm-delete" >
-			            <img src="images/borrar.svg" style="width:20px"/></a></td>';
-
-			            /* <button class="btn btn-default" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete">Delete record #54</button>*/
-
-			            //echo '<td ><a id="eliminar" href="documentos/'.$row['documento'].'" target="_blank"><img src="images/borrar.svg" style="width:20px"/></a></td>';
+			            echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/doc.svg" style="width:20px"/></a></td>';
 			            //echo '<td>'.$row['documento'].'</td>';
 			        	echo '</tr>';    
 				        }
@@ -312,45 +304,6 @@ $('#input-b2').fileinput({
 			}
 
 			?>
-
-
-<!--  modal delete -->			
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Eliminar</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    
-                </div>
-            
-                <div class="modal-body">
-                    <p>Esta a punto de eliminar.</p>
-                    <p>Esta seguro que desea hacerlo?</p>
-                    <p class="debug-url"></p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger btn-ok">Borrar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-			<!-- Fin modal delete -->
-
-<!-- Scripy llama a eliminar el registro -->
- <script>
-       
-        $('#confirm-delete').on('show.bs.modal', function(e) {
-            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-        });
-
-
-    </script>
-<!-- Fin script llama  eliminar -->
-
+			
 	</body>		
 </html>

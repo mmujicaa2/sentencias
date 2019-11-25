@@ -20,15 +20,35 @@ $("#datepicker2").datepicker({
 
 
 
-$('#enviar').click(function(){
-	$.post( $("#ffolio").attr("action"),
-	$("#ffolio :input").serializeArray(),
-	function(info){ 
-		alert('insercion ok');
-  		});
-	limpiainput();
 
-	});
+
+$('#enviar').click(function(){
+    $.post( $("#ffolio").attr("action"),
+    $("#ffolio :input").serializeArray(),
+    function(info){ 
+        alert('insercion ok');
+        });
+    limpiainput();
+
+    });
+
+
+
+/*
+
+$('#enviar').click(function(){ //funcion mala!!!!
+        rit=$('#rit').val();
+        anio=$('#anio').val();
+        slMinistro=$('#slMinistro').val();
+        materia=$('#materia').val();
+        submateria=$('#submateria').val();
+        input-b2=$('#input-b2').val();
+        subeDatos(rit, anio,slMministro,materia,submateria,input-b2);
+    });
+*/
+
+
+
 
 
 
@@ -65,7 +85,6 @@ if ($('#select').val().length < 3) {
 
 
 
-
 });//fin
 
 
@@ -85,25 +104,34 @@ function selectMinistro(){
 }
 
 
-/*function subeDatos(){
-//console.log("aaaa");
+/*
 
-    var parametros= new formData($("ffolio")[0]); //instancia de datos del formulario
+function subeDatos(rit, anio,slMinistro,materia,submateria,input-b2){
+//alert('subiendo datos');
+cadena="rit" + rit +
+        "$anio" + anio +
+        "$slMinistro" + slMinistro +
+        "$materia" + materia +
+        "$submateria" + submateria +
+        "$input-b2" + input-b2 ;
+
     $.ajax({
-        data: parametros,
-        url: "ingsentencia.php",
         type: "POST",
-        contentType: false,
-        processData: false,
-        beforesend: function(){
-
-        },
-        success: function(response){
-            alert(response);
+        url: "ingsentencia.php",
+        data: cadena,
+        success: function(r){
+            if(r==1){
+                //$("#tabladatos").load('../indexdt.php');
+                alertify.success("Datos agregados correctamente");
+            }else{
+                alertify.error("fallo ingreso de datos");
+            }
         }
 
     });
 
-}*/
+}
+*/
+
 
 
