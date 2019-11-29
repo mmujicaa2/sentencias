@@ -107,7 +107,7 @@ $('#input-b2').fileinput({
 	
 	
 		</script>
-		
+		/*
 				<?php
 					define('NUM_ITEMS_BY_PAGE', 15);
 					require 'conexion/db.php';
@@ -120,7 +120,7 @@ $('#input-b2').fileinput({
 					$total_filas=mysqli_fetch_assoc($resultadototal);
 					$num_total_rows=$total_filas['total_filas'];
 					
-				?>
+				?>*/
 
 
 		<title>Sentencias</title>
@@ -183,7 +183,7 @@ $('#input-b2').fileinput({
 				<!-- Aca va un select con los minitros -->
 
 
-				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="5" title="Seleccione ministros" data-lang="es_ES" required>
+				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES" required>
 						<!-- Carga select de tabla ministro -->
 						<?php
 						require 'conexion/db.php';
@@ -232,7 +232,7 @@ $('#input-b2').fileinput({
 
 							
 					 <div class="modal-footer">
-				       		<button type="button bnt" class="btn btn-primary" onclick="subeDatos();">Agregar</button>
+				       		<button type="button" class="btn btn-primary" onclick="subeDatos();">Agregar</button>
 				     </div>
 						</form>
 
@@ -264,6 +264,7 @@ $('#input-b2').fileinput({
 		      <th>Ministro1</th>
 		      <th>Ministro2</th>
 		      <th>Ministro3</th>
+		      <td><img src="images/doc_titulo.svg" style="width:25px"/></td>
 		      <td><img src="images/editar_titulo.svg" style="width:20px"/></td>
 		      <td><img src="images/borrar_titulo.svg" style="width:30px"/></td>
 			</tr>  
@@ -292,14 +293,14 @@ $('#input-b2').fileinput({
 				        echo '<td>'.$row['ministro1'].'</td>';
 				        echo '<td>'.$row['ministro2'].'</td>';
 				        echo '<td>'.$row['ministro3'].'</td>';
-			            //echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/editar.svg" style="width:20px"/></a></td>';
-			             echo '<td ><a  href="#" class="edid"  data-href="'.$row['id_oficio'].'"  data-toggle="modal" data-target="#confirm-update" >
-
-			            <img class="eimg" data-href="'.$row['id_oficio'].'" title="'.$row['id_oficio']/*solo para ver los valores en la pagina*/.'" src="images/editar.svg" style="width:20px"/></a></td>';
+			            //Abrir doc
+			            echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/doc.svg" style="width:22px"/></a></td>';
 			            
-			            echo '<td ><a  href="#"  data-href="delsentencia.php?idfolio='.$row['id_oficio'].'"  class="eliminar" data-toggle="modal" data-target="#confirm-delete" >
+			            //Modal editar 
+			            echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" ><img class="eimg" src="images/editar.svg" style="width:20px"  onclick="datosEditar('.$row['id_oficio'].')"  /></a></td>';
 			            
-			            <img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
+			            //Eliminar
+			            echo '<td ><a  href="#"  data-href="delsentencia.php?idfolio='.$row['id_oficio'].'"  class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
 
 			            /* <button class="btn btn-default" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete">Delete record #54</button>*/
 
@@ -322,38 +323,22 @@ $('#input-b2').fileinput({
 <div class="modal fade" id="confirm-update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-            
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">Editar</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    
                 </div>
-            
                 <div class="modal-body">
-                    
 				      <div class="modal-body" id="editar">
-			
-		
-				<form id="efolio" action="edtsentencia.php" method="post" enctype="multipart/form-data" >
-							<?php 
-								require 'conexion/db.php';//revisar si es necesario ya que esta abierta anterior% sino sacar
-							    $result = $conn->query('SELECT * FROM sentencia where id_oficio=');
+				
+			<!-- formulario editar -->
+				<form id="efolio" action="edtsentencia.php" method="post" enctype="multipart/form-data" >							
 
-							 
-							 ?>
-
-
+					<input type="text" class="form-control form-group" id="erit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" value="" required>
 								
-								<input type="text" class="form-control form-group" name="erit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" value="sss" required>
-								
-						 		<div class="input-group form-group">
-									<input  id="edatepicker2" class="form-control form-group" name="eanio" required>
-									<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="datepicker2"></i></span>
-								</div>
-
-
-				<!-- Aca va un select con los minitros -->
-
+					<div class="input-group form-group">
+						<input  id="edatepicker2" class="form-control form-group" id="eanio" required>
+						<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="datepicker2"></i></span>
+					</div>
 
 				<select name="eslMinistro[]" id="eslMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="5" title="Seleccione ministros" data-lang="es_ES" required>
 						<!-- Carga select de tabla ministro -->
@@ -397,15 +382,9 @@ $('#input-b2').fileinput({
 <!-- Prueba file input krajee -->
 
 
-					<input id="einput-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true" data-allowed-file-extensions='["doc", "docx","pdf"]'>
+					<input id="einput-b2" class="file" name="einput-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="false" data-allowed-file-extensions='["doc", "docx","pdf"]' data-msg-placeholder="Reemplazar archivo(opcional)">
 <!-- fin prueba file input -->
 
-						
-
-							
-					 <div class="modal-footer">
-				       		<button type="button bnt" class="btn btn-primary" onclick="subeDatos();">Agregar</button>
-				     </div>
 						</form>
 
 
@@ -419,8 +398,8 @@ $('#input-b2').fileinput({
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger btn-ok">Editar</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-success btn-ok">Editar</a>
                 </div>
             </div>
         </div>
@@ -449,7 +428,7 @@ $('#input-b2').fileinput({
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-danger btn-ok">Borrar</a>
                 </div>
             </div>

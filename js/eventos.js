@@ -91,11 +91,13 @@ if ($('#select').val().length < 3) {
 });
 
 
-$('.eimg').on("click", function(){
-var edid = $(".eimg").attr("title");
-alert(edid);
+/* Funcion para obtener el id para editar vale hongo
+$('.edid').on("click", function(id){
+id = $(".edid").attr("data-href");
+alert(id);
 
 })
+*/
 
 
 
@@ -119,34 +121,15 @@ function selectMinistro(){
 }
 
 
-/*
+function datosEditar(id){
 
-function subeDatos(rit, anio,slMinistro,materia,submateria,input-b2){
-//alert('subiendo datos');
-cadena="rit" + rit +
-        "$anio" + anio +
-        "$slMinistro" + slMinistro +
-        "$materia" + materia +
-        "$submateria" + submateria +
-        "$input-b2" + input-b2 ;
-
-    $.ajax({
-        type: "POST",
-        url: "ingsentencia.php",
-        data: cadena,
-        success: function(r){
-            if(r==1){
-                //$("#tabladatos").load('../indexdt.php');
-                alertify.success("Datos agregados correctamente");
-            }else{
-                alertify.error("fallo ingreso de datos");
-            }
-        }
-
-    });
+ $("#erit").val('333');
+ $("#edatepicker2").val('1999');
+ //$('select[name=eslMinistro]').val(1);
+//$('.select').selectpicker('selectAllText');
 
 }
-*/
+
 
 
 
