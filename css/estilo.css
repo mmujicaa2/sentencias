@@ -37,3 +37,6 @@
     background: -o-linear-gradient(top, #2980B9 0%, #2980B9 100%)!important;
     background: linear-gradient(to bottom, #2980B9 0%, #2980B9 100%)!important;
 }
+
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+    color: grey;

@@ -122,13 +122,30 @@ function selectMinistro(){
 
 
 function datosEditar(id){
+//alert(id); test para mostrar el id  de la bbdd
+ $('#tabladatos tbody').on( 'click', 'tr', function () {
+        $(this).toggleClass('selected');
 
- $("#erit").val('333');
- $("#edatepicker2").val('1999');
- //$('select[name=eslMinistro]').val(1);
-//$('.select').selectpicker('selectAllText');
+  var valores= new Array();
+  i=0;
+
+  $(this).find("td").each(function(){
+                valores[i]=$(this).html();
+                 i++; 
+                 });
+            
+            $("#erit").val(valores[1]);
+            $("#edatepicker2").val(valores[2]);
+            //$("#eslMinistro").val(valores[5]);
+            $('#eslMinistro').val('Marcelo Mujica').attr("selected", "selected");
+            //$("#eslMinistro").selectmenu('refresh')
+
+    });
+
+
 
 }
+
 
 
 

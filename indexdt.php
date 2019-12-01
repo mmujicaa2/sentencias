@@ -85,17 +85,17 @@ $('#input-b2').fileinput({
 				"dom": '<"top"f>rt<"bottom"ip><"clear">',
 				"language": {
 				"searchPlaceholder": "Buscar por cualquier criterio",
-            "lengthMenu": "Mostrar _MENU_ filas por página",
-            "zeroRecords": "No se encontro filas",
-            "info": "Página _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay registros disponibles",
-            "infoFiltered": "(Filtrado de _MAX_ total de filas)",
-            "sSearch":         "Buscar:",
-            "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
+	            "lengthMenu": "Mostrar _MENU_ filas por página",
+	            "zeroRecords": "No se encontró filas",
+	            "info": "Página _PAGE_ de _PAGES_",
+	            "infoEmpty": "No hay registros disponibles",
+	            "infoFiltered": "(Filtrado de _MAX_ total de filas)",
+	            "sSearch":         "Buscar:",
+	            "oPaginate": {
+	                   "sFirst":    "Primero",
+       		           "sLast":     "Último",
+            	       "sNext":     "Siguiente",
+                	   "sPrevious": "Anterior"
                 },
         			},
 					responsive: true,
@@ -107,8 +107,8 @@ $('#input-b2').fileinput({
 	
 	
 		</script>
-		/*
-				<?php
+		
+	<!--			<?php
 					define('NUM_ITEMS_BY_PAGE', 15);
 					require 'conexion/db.php';
 					$query="SELECT * FROM sentencia ORDER BY id_oficio DESC";
@@ -120,7 +120,7 @@ $('#input-b2').fileinput({
 					$total_filas=mysqli_fetch_assoc($resultadototal);
 					$num_total_rows=$total_filas['total_filas'];
 					
-				?>*/
+				?> -->
 
 
 		<title>Sentencias</title>
@@ -180,9 +180,6 @@ $('#input-b2').fileinput({
 								</div>
 
 
-				<!-- Aca va un select con los minitros -->
-
-
 				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES" required>
 						<!-- Carga select de tabla ministro -->
 						<?php
@@ -209,7 +206,7 @@ $('#input-b2').fileinput({
 
 
 					<select name="materia" id="materia" class="form-control mb-3" required >
-														<option  name="" value=""></option>
+														<option  name="" value="" style="color:grey">Seleccione Materia</option>
 														<option  name="Civil" value="Civil">Civil</option>
 														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
 														<option name="Penal" value="Penal">Penal</option>
@@ -222,15 +219,8 @@ $('#input-b2').fileinput({
 
 					<div  id="submateria"></div> <!-- Carga el select con las submaterias -->
 								
-<!-- Prueba file input krajee -->
-
-
 					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true" data-allowed-file-extensions='["doc", "docx","pdf"]'>
-<!-- fin prueba file input -->
 
-						
-
-							
 					 <div class="modal-footer">
 				       		<button type="button" class="btn btn-primary" onclick="subeDatos();">Agregar</button>
 				     </div>
@@ -379,11 +369,8 @@ $('#input-b2').fileinput({
 
 					<div  id="submateria"></div> <!-- Carga el select con las submaterias -->
 								
-<!-- Prueba file input krajee -->
-
 
 					<input id="einput-b2" class="file" name="einput-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="false" data-allowed-file-extensions='["doc", "docx","pdf"]' data-msg-placeholder="Reemplazar archivo(opcional)">
-<!-- fin prueba file input -->
 
 						</form>
 
