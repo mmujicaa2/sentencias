@@ -1,6 +1,4 @@
 <?php 
- 
-
 
       if ($_FILES['input-b2']) {
 

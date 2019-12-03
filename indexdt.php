@@ -168,7 +168,8 @@ $('#input-b2').fileinput({
 				      
 				      <div class="modal-body" id="inserta">
 			
-		
+		<!-- Formulario ingreso -->
+
 				<form id="ffolio" action="ingsentencia.php" method="post" enctype="multipart/form-data" >
 							
 								
@@ -178,6 +179,7 @@ $('#input-b2').fileinput({
 									<input  id="datepicker2" class="form-control form-group" name="anio" required>
 									<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="datepicker2"></i></span>
 								</div>
+
 
 
 				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES" required>
@@ -222,7 +224,7 @@ $('#input-b2').fileinput({
 					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true" data-allowed-file-extensions='["doc", "docx","pdf"]'>
 
 					 <div class="modal-footer">
-				       		<button type="button" class="btn btn-primary" onclick="subeDatos();">Agregar</button>
+				       		<button type="button bnt" class="btn btn-primary">Agregar</button>
 				     </div>
 						</form>
 
@@ -311,26 +313,29 @@ $('#input-b2').fileinput({
 
 <!--  modal Editar-->			
 <div class="modal fade" id="confirm-update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+            
+                <div class="modal-header  bg-light mb-3">
                     <h4 class="modal-title" id="myModalLabel">Editar</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
 				      <div class="modal-body" id="editar">
 				
-			<!-- formulario editar -->
-				<form id="efolio" action="edtsentencia.php" method="post" enctype="multipart/form-data" >							
+<!-- formulario editar -->
+				<form id="efolio" action="edsentencia.php" method="post" enctype="multipart/form-data" >
+					
+					<input type="hidden" id="id" >
 
-					<input type="text" class="form-control form-group" id="erit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" value="" required>
+					<input type="text" class="form-control form-group" id="erit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4"  required value="">
 								
 					<div class="input-group form-group">
-						<input  id="edatepicker2" class="form-control form-group" id="eanio" required>
-						<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="datepicker2"></i></span>
+						<input  id="edatepicker2" class="form-control form-group" id="eanio" required value="">
+						<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="edatepicker2"></i></span>
 					</div>
 
-				<select name="eslMinistro[]" id="eslMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="5" title="Seleccione ministros" data-lang="es_ES" required>
+				<select name="eslMinistro[]" id="eslMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES" required>
 						<!-- Carga select de tabla ministro -->
 						<?php
 						require 'conexion/db.php';
@@ -367,31 +372,23 @@ $('#input-b2').fileinput({
 					</select>
 
 
-					<div  id="submateria"></div> <!-- Carga el select con las submaterias -->
+					<div  id="esubmateria"></div> <!-- Carga el select con las submaterias -->
 								
 
 					<input id="einput-b2" class="file" name="einput-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="false" data-allowed-file-extensions='["doc", "docx","pdf"]' data-msg-placeholder="Reemplazar archivo(opcional)">
 
-						</form>
-
-
-					<div id="resultadoinsert"></div> <!-- Eliminar -->
-				      </div>
-
-
-
-                    </p>
-                    <p class="debug-url"></p>
-                </div>
-                
-                <div class="modal-footer">
+          <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-success btn-ok">Editar</a>
+											<button type="button btn" class="btn btn-success" id="btneditar" >Editar</button>
+                     <!-- <a class="btn btn-success btn-ok">Editar</a> -->
                 </div>
+              </form>
+
             </div>
         </div>
     </div>
-
+</div>
+</div>
 			<!-- Fin modal delete -->
 
 

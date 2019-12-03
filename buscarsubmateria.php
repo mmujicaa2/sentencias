@@ -1,3 +1,4 @@
+
 <?php
 require 'conexion/db.php';
 $consultamateria = $_POST['bmateria'];

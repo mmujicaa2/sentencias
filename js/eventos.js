@@ -28,48 +28,9 @@ $("#edatepicker2").datepicker({
 });
 
 
-
-
-$('#enviar').click(function(){
-    $.post( $("#ffolio").attr("action"),
-    $("#ffolio :input").serializeArray(),
-    function(info){ 
-        alert('insercion ok');
-        });
-    limpiainput();
-
-    });
-
-
-
-/*
-
-$('#enviar').click(function(){ //funcion mala!!!!
-        rit=$('#rit').val();
-        anio=$('#anio').val();
-        slMinistro=$('#slMinistro').val();
-        materia=$('#materia').val();
-        submateria=$('#submateria').val();
-        input-b2=$('#input-b2').val();
-        subeDatos(rit, anio,slMministro,materia,submateria,input-b2);
-    });
-*/
-
-
-
-
-
-
 $('.modal').on('hidden.bs.modal', function(){//limpia input  cuando cierra modal
     $(this).find('form')[0].reset();
      location.reload();
-});
-
-
-$(".custom-file-input").on("change", function() {
-  var fileName = $(this).val().split("\\").pop();
-  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    
 });
 
 
@@ -82,27 +43,36 @@ $(".custom-file-input").on("change", function() {
      } 
 });
 
-//Compribar si se sleecionaron los 3 ministros, no terminado, revisar
-$('#select').on("change", function(){
- alert('You must select at least 3 option.');
-if ($('#select').val().length < 3) {
-    alert('You must select at least 3 option.');
-}
+ $("#emateria").on("change", function(){
+  var emateria = $("select#emateria").val();
+     if (emateria != "" ) {
+        $.post("buscarsubmateria.php", {bmateria: emateria}, function(mensaje) {
+            $("#esubmateria").html(mensaje);
+         }); 
+     } 
 });
 
 
-/* Funcion para obtener el id para editar vale hongo
-$('.edid').on("click", function(id){
-id = $(".edid").attr("data-href");
-alert(id);
-
-})
-*/
 
 
 
+$('#btneditar').on('click', function(e) {
+        alert('aa');
+        e.preventDefault();
+        var dataString = $('#efolio').serialize();
+        console.log('Datos serializados: '+dataString);
+    }); 
 
-});//fin
+
+
+
+
+});//fin document.ready
+
+
+
+
+
 
 
 
@@ -121,8 +91,9 @@ function selectMinistro(){
 }
 
 
+
 function datosEditar(id){
-//alert(id); test para mostrar el id  de la bbdd
+//alert(id);
  $('#tabladatos tbody').on( 'click', 'tr', function () {
         $(this).toggleClass('selected');
 
@@ -130,21 +101,18 @@ function datosEditar(id){
   i=0;
 
   $(this).find("td").each(function(){
-                valores[i]=$(this).html();
+                valores[i]=$(this).text();
                  i++; 
                  });
-            
-            $("#erit").val(valores[1]);
-            $("#edatepicker2").val(valores[2]);
-            //$("#eslMinistro").val(valores[5]);
-            $('#eslMinistro').val('Marcelo Mujica').attr("selected", "selected");
-            //$("#eslMinistro").selectmenu('refresh')
+            //ocupar metodo attr value  porque metodo val(algo) no cambia el value solo el texto cTM!
+            $('#id').attr('value', id).trigger('change');
+            $('#erit').attr('value',valores[1]).trigger('change');
+            $("#edatepicker2").attr('value',valores[2]).trigger('change');
+            //$("#eslMinistro").attr('value',valores[2]);
 
     });
-
-
-
 }
+
 
 
 
