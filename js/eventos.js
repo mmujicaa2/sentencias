@@ -55,13 +55,37 @@ $('.modal').on('hidden.bs.modal', function(){//limpia input  cuando cierra modal
 
 
 
-
+/*
 $('#btneditar').on('click', function(e) {
-        alert('aa');
         e.preventDefault();
+        alert($('#id').val());
         var dataString = $('#efolio').serialize();
         console.log('Datos serializados: '+dataString);
     }); 
+
+*/
+
+$('#btneditar').on('click', function(e) {
+            e.preventDefault();
+            var id = $("input#id").val();
+            var erit = $("input#erit").val();
+            var eanio = $("input#edatepicker2").val();
+            if (id != "" ) {
+                alert($('#id').val());
+                alert($('#erit').val());
+                alert($('#eanio').val());
+
+            /*$.post("edsentencia.php", {bmateria: materia}, function(mensaje) {
+            $("#submateria").html(mensaje);
+         }); */
+     } 
+
+
+    });
+
+
+  
+
 
 
 
@@ -92,10 +116,24 @@ function selectMinistro(){
 
 
 
-function datosEditar(id){
-//alert(id);
- $('#tabladatos tbody').on( 'click', 'tr', function () {
-        $(this).toggleClass('selected');
+function datosEditar(id,rit,anio){
+  $('#id').attr('value', id).change();
+  $('#erit').attr('value', rit).change();
+  $('#edatepicker2').attr('value', anio).change();
+  var a=$('#id').val();
+  var b=$('#erit').val();
+  var c=$('#edatepicker2').val();
+  alertify.success(a+' '+b+' '+c);
+}
+
+
+
+
+
+
+/*
+$('#tabladatos tbody').on( 'click', 'tr', function () {
+        //$(this).toggleClass('selected');
 
   var valores= new Array();
   i=0;
@@ -104,17 +142,15 @@ function datosEditar(id){
                 valores[i]=$(this).text();
                  i++; 
                  });
-            //ocupar metodo attr value  porque metodo val(algo) no cambia el value solo el texto cTM!
+            //ocupar metodo attr value  porque metodo val(algo) no cambia el dom  solo el texto cTM!
+            //$('#id').val(id).trigger('change');
             $('#id').attr('value', id).trigger('change');
+            
+            $('#id').attr('defaultvalue', id).trigger('change');
             $('#erit').attr('value',valores[1]).trigger('change');
             $("#edatepicker2").attr('value',valores[2]).trigger('change');
             //$("#eslMinistro").attr('value',valores[2]);
-
-    });
-}
-
-
-
+*/
 
 
 

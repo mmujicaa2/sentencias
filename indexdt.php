@@ -57,6 +57,20 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
 
 
+<!-- Alertify -->
+	<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+<!-- Fin alertify -->
+
 <!-- Inicializa krajee File input----inicializado en el input -->
 
 
@@ -289,7 +303,7 @@ $('#input-b2').fileinput({
 			            echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/doc.svg" style="width:22px"/></a></td>';
 			            
 			            //Modal editar 
-			            echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" ><img class="eimg" src="images/editar.svg" style="width:20px"  onclick="datosEditar('.$row['id_oficio'].')"  /></a></td>';
+			            echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" ><img class="eimg" src="images/editar.svg" style="width:20px"  onclick="datosEditar('.$row['id_oficio'].','.$row['rit'].','.$row['anio'].')"  /></a></td>';
 			            
 			            //Eliminar
 			            echo '<td ><a  href="#"  data-href="delsentencia.php?idfolio='.$row['id_oficio'].'"  class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
@@ -331,7 +345,7 @@ $('#input-b2').fileinput({
 					<input type="text" class="form-control form-group" id="erit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4"  required value="">
 								
 					<div class="input-group form-group">
-						<input  id="edatepicker2" class="form-control form-group" id="eanio" required value="">
+						<input  type="text" id="edatepicker2" class="form-control form-group" required >
 						<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="edatepicker2"></i></span>
 					</div>
 

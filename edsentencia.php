@@ -29,7 +29,7 @@ if ($_POST['id']) {
           documento='$edocumento'
           where id_oficio=$id";
 
-          echo $qedita;
+          //echo $qedita;
 
         }// fin del if    
 
@@ -44,7 +44,7 @@ if ($_POST['id']) {
           submateria='$esubmateria',
           where id_oficio=$id";
 
-          echo $qedita;
+          //echo $qedita;
         }
         
 /*
