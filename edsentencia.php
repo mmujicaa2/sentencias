@@ -1,5 +1,5 @@
 <?php 
-//var_dump($_POST);
+var_dump($_POST);
 include_once('conexion/db.php');
 if ($_POST['id']) {
 
@@ -10,11 +10,11 @@ if ($_POST['id']) {
         $emateria=$_POST['emateria'];
         $esubmateria=$_POST['esubmateria'];
         
-    if ($_FILES['einput-b2']) {
-        $edocumento= $_POST['einput-b2'];
+    if ($_FILES['einput']) {
+        $edocumento= $_POST['einput'];
         $directorio = 'documentos/';
-        $nombredoc=$_FILES['einput-b2']['name'];
-        $tempdoc=$_FILES['einput-b2']['tmp_name'];
+        $nombredoc=$_FILES['einput']['name'];
+        $tempdoc=$_FILES['einput']['tmp_name'];
         $prefijodoc=date("d.m.y-");
         move_uploaded_file($tempdoc, $directorio.$prefijodoc.$nombredoc);
                  

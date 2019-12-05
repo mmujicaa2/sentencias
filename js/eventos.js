@@ -65,30 +65,37 @@ $('#btneditar').on('click', function(e) {
 
 */
 
+
 $('#btneditar').on('click', function(e) {
             e.preventDefault();
             var id = $("input#id").val();
             var erit = $("input#erit").val();
-            var eanio = $("input#edatepicker2").val();
-            if (id != "" ) {
-                alert($('#id').val());
-                alert($('#erit').val());
-                alert($('#eanio').val());
+            var eanio = $("#edatepicker2").val();
+            var eslMinistro = $("select#eslMinistro").val();
+            var emateria = $("#emateria").val();
+            var esubmateria = $("select#submateria").val();
+            var einput = $("#einput").val();
 
-            /*$.post("edsentencia.php", {bmateria: materia}, function(mensaje) {
-            $("#submateria").html(mensaje);
-         }); */
-     } 
+
+            if (id != "" ) {
+                           
+                        $.ajax({                        
+                            method:"POST",                 
+                            url:"edsentencia.php",
+                            data: {id: id, erit: erit, eanio:eanio, eslMinistro:eslMinistro, emateria:emateria, esubmateria:esubmateria, einput:einput},
+                            success: function(data)             
+                            {
+                                alertify.success(data);
+                            }
+
+                        });        
+                    } 
 
 
     });
 
 
   
-
-
-
-
 
 
 });//fin document.ready
@@ -116,15 +123,20 @@ function selectMinistro(){
 
 
 
-function datosEditar(id,rit,anio){
+function datosEditar(id,rit,anio,ministros,materia,submateria,sentencia){
+    //alert(anio);
   $('#id').attr('value', id).change();
   $('#erit').attr('value', rit).change();
   $('#edatepicker2').attr('value', anio).change();
-  var a=$('#id').val();
-  var b=$('#erit').val();
-  var c=$('#edatepicker2').val();
-  alertify.success(a+' '+b+' '+c);
+    
+  /* Prueba alertify
+          var a=$('#id').val();
+          var b=$('#erit').val();
+          var c=$('#edatepicker2').val();
+          alertify.success(a+' '+b+' '+c);
+           */
 }
+ 
 
 
 
