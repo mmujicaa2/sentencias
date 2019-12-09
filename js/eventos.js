@@ -66,34 +66,76 @@ $('#btneditar').on('click', function(e) {
 */
 
 
+
 $('#btneditar').on('click', function(e) {
-            e.preventDefault();
-            var id = $("input#id").val();
+            e.preventDefault(); 
+            var id = $("#id").val();
             var erit = $("input#erit").val();
             var eanio = $("#edatepicker2").val();
             var eslMinistro = $("select#eslMinistro").val();
-            var emateria = $("#emateria").val();
+            var emateria = $("select#emateria").val();
             var esubmateria = $("select#submateria").val();
-            var einput = $("#einput").val();
+
+           //var einput = $("#einput")prop(files)[0];
+            alertify.success(einput);
 
 
-            if (id != "" ) {
-                           
                         $.ajax({                        
-                            method:"POST",                 
+                            data: {
+                                id:id,
+                                erit:erit,
+                                eanio:eanio,
+                                eslMinistro:eslMinistro,
+                                emateria:emateria,
+                                esubmateria:esubmateria,
+                                einput:einput,
+                            },
                             url:"edsentencia.php",
-                            data: {id: id, erit: erit, eanio:eanio, eslMinistro:eslMinistro, emateria:emateria, esubmateria:esubmateria, einput:einput},
+                            type:"POST",
+                            contentType: false,
+                            procesData: false,       
+                            
                             success: function(data)             
                             {
-                                alertify.success(data);
+                               alertify.success(data);
                             }
 
-                        });        
-                    } 
+                        });       
 
 
     });
 
+
+$('#btnedtmin').on('click', function(e) {
+            e.preventDefault(); 
+           
+            var id = $("#id").val();
+            var edministro = $("input#edministro").val();
+            
+            // alert(id);
+            // alert(edministro);
+
+
+         $.ajax({                        
+                    data: {id:id,edministro:edministro},
+                    url:"edministro.php",
+                    type:"POST",
+                    // contentType: false,
+                    // procesData: false,       
+                    
+                    success: function(data)             
+                    {
+                       //$('#confirm-update').modal('hide');
+                       var msg = alertify.success(data);
+                       msg.delay(1).setContent(data);
+                       setTimeout(function() {$('#confirm-update').modal('hide');}, 1000);
+                       
+                    }
+
+                });       
+
+
+    });
 
   
 
@@ -123,7 +165,7 @@ function selectMinistro(){
 
 
 
-function datosEditar(id,rit,anio,ministros,materia,submateria,sentencia){
+function datosEditar(id,rit,anio){
     //alert(anio);
   $('#id').attr('value', id).change();
   $('#erit').attr('value', rit).change();
@@ -138,10 +180,13 @@ function datosEditar(id,rit,anio,ministros,materia,submateria,sentencia){
 }
  
 
+function ministroEditar(id,edministro){
 
-
-
-
+  $('#id').attr('value', id).change();
+  $('#edministro').attr('value', edministro).change();
+           
+}
+ 
 
 /*
 $('#tabladatos tbody').on( 'click', 'tr', function () {
