@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
 		
 
-<!--Calendario-->
+<!--Datepicker bootstrap-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
@@ -239,8 +239,13 @@ var table = $('#tabladatos').DataTable( {
 								<input type="text" class="form-control form-group" name="rit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" required>
 								
 						 		<div class="input-group form-group">
-									<input  id="datepicker2" class="form-control form-group" name="anio" required>
-									<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="datepicker2"></i></span>
+									<input  id="datepicker2" class="form-control form-group" name="anio" placeholder="Año" required>
+										<label for="datepicker2">
+											<span class="input-group-text" id="basic-addon2" for="datepicker2" >
+												
+												<i class="fa fa-calendar" style="font-size:24px"></i>
+											</span>
+										</label>
 								</div>
 
 

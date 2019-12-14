@@ -53,6 +53,12 @@ thead input {
         font-size: 12px;
     }
 
-.dataTables input { width: 300px }
+.dataTables input { 
+    width: 300px;
+    
+ }
 
-.dataTables_filter input { width: 700px } /*tamaño del input buscador*/
+.dataTables_filter input {
+ width: 700px ;
+ font-size: 12px;
+ } /*tamaño del input buscador*/
