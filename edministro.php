@@ -13,11 +13,11 @@ if ($_POST['id']) {
         if(mysqli_query($conn,$qedita)){
                    // header("Location:mant_ministros.php");
           echo "Ministro actualizado";
-          
+
                   
               }
         else{
-                echo "Falló edición";
+                echo "Falló edición de ministro";
             }
 
 } 

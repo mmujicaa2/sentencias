@@ -194,7 +194,8 @@ $('#input-b2').fileinput({
 				<form id="fiministro" action="ingministro.php" method="post">
 							
 								
-								<input type="text" class="form-control form-group" name="nministro"  placeholder="Nombre Ministro" pattern="[a-zA-Z0-9\s]{1,200}" maxlength="200" required>
+								<input type="text" class="form-control form-group" name="nministro"  placeholder="Nombre Ministro" 
+								pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" required>
 
 								 <div class="modal-footer">
 							       		<button type="button bnt" class="btn btn-primary">Agregar</button>
@@ -283,7 +284,7 @@ $('#input-b2').fileinput({
 					<input type="hidden" id="id" >
 
 					<input type="text" class="form-control form-group" id="edministro" 
-					pattern="[a-zA-Z0-9\s]{1,200}" maxlength="200" placeholder="Nombre Ministro" required >
+					pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" placeholder="Nombre Ministro" required >
 
           <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

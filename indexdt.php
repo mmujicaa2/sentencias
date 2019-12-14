@@ -101,9 +101,28 @@ $('#input-b2').fileinput({
 		<script>
 
 		$(document).ready( function () {
-			$('#tabladatos')
+
+// Buscador por inputs header
+    $('#tabladatos thead tr').clone(true).appendTo( '#tabladatos thead' );
+    $('#tabladatos thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+ 
+//init datatables
+			 var table=$('#tabladatos')
 				.addClass( 'nowrap' )
 				.DataTable( {
+				"pageLength": 10,
 				"deferRender": true,
 				"dom": '<"top"f>rt<"bottom"ip><"clear">',
 				"language": {
@@ -126,11 +145,32 @@ $('#input-b2').fileinput({
 						{ targets: [2, -3], className: 'dt-body-left' }
 					]
 				} );
-		} );
-	
+
+//fin init datatbles
+
+
+    /*
+var table = $('#tabladatos').DataTable( {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+    */
+
+
+
+
+
+
+		} );//fin document.ready
+
+
 	
 		</script>
 		
+
+
+
+
 	<!--			<?php
 					define('NUM_ITEMS_BY_PAGE', 15);
 					require 'conexion/db.php';
@@ -205,7 +245,7 @@ $('#input-b2').fileinput({
 
 
 
-				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group " data-live-search="true" multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES" required>
+				<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group "  multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES"  required>
 						<!-- Carga select de tabla ministro -->
 						<?php
 						require 'conexion/db.php';
@@ -232,13 +272,18 @@ $('#input-b2').fileinput({
 
 					<select name="materia" id="materia" class="form-control mb-3" required >
 														<option  name="" value="" style="color:grey">Seleccione Materia</option>
-														<option  name="Civil" value="Civil">Civil</option>
-														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
-														<option name="Penal" value="Penal">Penal</option>
-														<option name="Laboral" value="Laboral">Laboral</option>
-														<option name="Familia" value="Familia">Familia</option>
-														<option name="Proteccion" value="Proteccion">Protección</option>
-														<option name="jlp" value="jlp">Juzgado Policia Local</option>
+														<?php 
+														 include "conexion/db.php";
+														 $querymateria="Select distinct materia from materia";
+														 if ($resultado = mysqli_query($conn,$querymateria)){
+														 		while($campomateria=mysqli_fetch_array($resultado)){
+														 			$materia=$campomateria['materia'];
+														 			echo '<option value="'.$materia.'">'.$materia.'</option>';
+														 		}
+
+														 }
+
+														?>
 					</select>
 
 
@@ -276,9 +321,9 @@ $('#input-b2').fileinput({
 		      <th>Año</th>
 		      <th>Materia</th>
 		      <th>Submateria</th>
-		      <th>Ministro1</th>
-		      <th>Ministro2</th>
-		      <th>Ministro3</th>
+		      <th>Redactor</th>
+		      <th>Integrante</th>
+		      <th>Integrante</th>
 		      <td><img src="images/doc_titulo.svg" style="width:25px"/></td>
 		      <td><img src="images/editar_titulo.svg" style="width:20px"/></td>
 		      <td><img src="images/borrar_titulo.svg" style="width:30px"/></td>
