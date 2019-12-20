@@ -1,8 +1,49 @@
 $(document).ready(function(){
 
- 	
-    
-$('select').selectpicker();
+
+$('#slMinistro').select2({
+      multiple: true, //multiselect
+      placeholder:  'Redactor, Integrante1,Integrante2',
+      allowClear: true, //permite X para eliminar seleccoin
+      dropdownParent: $('#ingresaoficio'), //Para no salirse del modal
+      maximumSelectionLength: 3, //maximo de seleccion
+      language: "es",
+          ajax: {
+                  url: 'select2ministros.php',
+                  dataType: 'json',
+                  delay: 250,
+                  processResults: function (data) {
+                     console.log(data);
+                      return {
+                        results: data
+                      };
+                  },
+                  cache: true
+                }
+
+      
+    });
+
+$("#slMinistro").on("select2:select", function (evt) { //para mantener orden de seleccion y luego volcarlo a la BBDD
+  var element = evt.params.data.element;
+  var $element = $(element);
+  
+  $element.detach();
+  $(this).append($element);
+  $(this).trigger("change");
+});
+
+
+   
+
+$("#boton").on("click", function(){
+               alert ($('#slMinistro').val());
+               
+               });
+
+
+
+//$('select').selectpicker();
 
 $('#datepicker').datepicker({
  	language: 'es',
