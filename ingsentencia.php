@@ -24,7 +24,7 @@
                             //echo $qinserta;
 
                         if(mysqli_query($conn,$qinserta)){
-                                header("Location:indexdt.php");
+                                header("Location:mant_sentencias.php");
                             }
                             else{
                                 echo "Falló insercion, intentelo denuevo o contactese con el Webmaster mmujica@pjud.cl";
@@ -34,7 +34,7 @@
                     else
                     {
                       echo 'Error en la carga de archivo, intentelo denuevo o contactese con el Webmaster mmujica@pjud.cl';
-                      header("Location:indexdt.php");
+                      header("Location:mant_sentencias.php");
                     }
       }
     	

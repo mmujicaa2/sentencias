@@ -2,26 +2,26 @@ $(document).ready(function(){
 
 
 $('#slMinistro').select2({
+      language: "es",
       multiple: true, //multiselect
       placeholder:  'Redactor, Integrante1,Integrante2',
       allowClear: true, //permite X para eliminar seleccoin
       dropdownParent: $('#ingresaoficio'), //Para no salirse del modal
       maximumSelectionLength: 3, //maximo de seleccion
-      language: "es",
+      placeholder: 'Redactor, Integrante1,Integrante2',
           ajax: {
                   url: 'select2ministros.php',
                   dataType: 'json',
-                  delay: 250,
-                  processResults: function (data) {
-                     console.log(data);
+                 processResults: function (data) {
                       return {
-                        results: data
+                        results: $.map(data, function(obj) {
+                          return { id: obj.nombre, text: obj.nombre };
+                        })
                       };
-                  },
-                  cache: true
-                }
+                    }
+              },
 
-      
+
     });
 
 $("#slMinistro").on("select2:select", function (evt) { //para mantener orden de seleccion y luego volcarlo a la BBDD
@@ -180,6 +180,10 @@ $('#btnedtmin').on('click', function(e) {
     });
 
   
+
+//$("div.bottom").addClass("container");
+
+
 
 
 });//fin document.ready

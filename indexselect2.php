@@ -131,7 +131,7 @@ $('#input-b2').fileinput({
 			 var table=$('#tabladatos')
 				.addClass( 'nowrap' )
 				.DataTable( {
-				"pageLength": 10,
+				"pageLength": 15,
 				"deferRender": true,
 				"dom": '<"top"f>rt<"bottom"ip><"clear">',
 				"language": {
@@ -200,23 +200,9 @@ var table = $('#tabladatos').DataTable( {
 
 		<body>
 			<div class="container">
-				<div class="form-group">
-					<div class="row">
-						<div class="col-sm">
-							<img src="images/salir2.png" alt="salir">
-						</div>
-						
-						<div class="col-lg-6">
-							<h2>Mantenedor de sentencias</h2>
-						</div>
-						
-						<div class="col-sm float-right">
-							<img src="images/usuario.png" alt=" usuario" class="float-right">	
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				</div>
+				<h2 class="text-center">Mantenedor de sentencias</h2>
+			</div>
+
 			<!-- Comienzo mantenedores -->
 
 
@@ -264,16 +250,35 @@ var table = $('#tabladatos').DataTable( {
 			 -->
 
 <!-- Prueba SELECT2 -->
-	<select name="slMinistro" id="slMinistro" class="form-control mb-3" style="width: 100%" required>
-				<!-- 
-				<option></option>
-				<option>primero</option>
-			    <option>two</option>
-			    <option>four</option>
-			    <option>six</option>
-			    <option>ultimo</option>
-			     -->
-						
+	<select name="slMinistro[]" id="slMinistro" class="form-control mb-3" style="width: 100%"  required>
+				<?php
+						require 'conexion/db.php';
+						$mensaje = "";
+
+								$ministros="SELECT * FROM ministro";
+								//echo $query;
+								$query= mysqli_query($conn,$ministros);
+
+								while($campo = mysqli_fetch_array($query)) {
+									$idMinistro = $campo['id_ministro'];
+									$nombreMinistro = $campo['nombre_ministro'];
+									$apMinistro= $campo['apaterno_ministro'];
+									//$amMinistro = $campo['amaterno_ministro'];
+
+									echo '<option value="'.$nombreMinistro.'">'.$nombreMinistro.'</option>';
+
+								};//Fin while $resultados
+
+						?>						
+
+				<!--x 
+				<option>Primero</option>
+			    <option>Segundo</option>
+			    <option>Tercero</option>
+			    <option>Cuarto</option>
+			    <option>Quinto</option>
+			    		
+				 -->
 
 	</select> <!-- fin select ministros -->
 
@@ -335,7 +340,6 @@ var table = $('#tabladatos').DataTable( {
 		      <th>Integrante</th>
 		      <th>Integrante</th>
 		      <td><img src="images/doc_titulo.svg" style="width:25px"/></td>
-		      <td><img src="images/editar_titulo.svg" style="width:20px"/></td>
 		      <td><img src="images/borrar_titulo.svg" style="width:30px"/></td>
 			</tr>  
 		  </thead> 
@@ -366,8 +370,7 @@ var table = $('#tabladatos').DataTable( {
 			            //Abrir doc
 			            echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/doc.svg" style="width:22px"/></a></td>';
 			            
-			            //Modal editar 
-			            echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" ><img class="eimg" src="images/editar.svg" style="width:20px"  onclick="datosEditar('.$row['id_oficio'].','.$row['rit'].','.$row['anio'].')"  /></a></td>';
+			            
 			            
 			            //Eliminar
 			            echo '<td ><a  href="#"  data-href="delsentencia.php?idfolio='.$row['id_oficio'].'"  class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
@@ -509,6 +512,10 @@ var table = $('#tabladatos').DataTable( {
 
     </script>
 <!-- Fin script llama  eliminar -->
+
+<div class="footer">
+	<p class="rights"><a href="mailto:mmujica@pjud.cl">Desarrollado por Marcelo Mujica</a></p>
+</div>
 
 	</body>		
 </html>

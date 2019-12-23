@@ -1,12 +1,12 @@
-.creditos{
-	position:fixed;
-	bottom: 5;
-	left: 1vw;
-	/*width: 300px;*/
-	font-family: arial;
-	color:#859AF5;
-	font-size:11px;
-	text-shadow: 0 0 1px #1FDCF2, 0 0 1px blue; 
+.footer{
+    position:absolute;
+    bottom:1px;
+    width:100%;
+    text-align:center;
+    color:#769DF6;
+    text-decoration: underline overline;
+    font-size: 10px;
+    
 }
 
 .dataTables_wrapper .dataTables_filter  { /*Parametros de la tabla*/
@@ -41,11 +41,12 @@
     background: -ms-linear-gradient(top, #2980B9 0%, #2980B9 100%)!important;
     background: -o-linear-gradient(top, #2980B9 0%, #2980B9 100%)!important;
     background: linear-gradient(to bottom, #2980B9 0%, #2980B9 100%)!important;
+
 }
 
 
 thead input {
-        width: 100%;
+        width: 110%;
         padding: 3px;
         box-sizing: border-box;
         border-radius: 1px;
@@ -60,5 +61,9 @@ thead input {
 
 .dataTables_filter input {
  width: 700px ;
- font-size: 12px;
+ font-size: 14px;
  } /*tamaño del input buscador*/
+
+.modal .modal-dialog { 
+    width: 850px; 
+}

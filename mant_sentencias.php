@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
 		
 
-<!--Calendario-->
+<!--Datepicker bootstrap-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
@@ -54,6 +54,16 @@
 
 <!--Scripts-->
 		<script src="js/eventos.js"></script>
+
+
+<!--Bootstrap Multiselect CSS y JS y lenguajes-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.js" integrity="sha256-tjUcUjAb8ZD4wFw6K6gB1WGIl7tQRzBFXIv909raSZo=" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
 
 
 <!--select2  -->
@@ -100,9 +110,28 @@ $('#input-b2').fileinput({
 		<script>
 
 		$(document).ready( function () {
-			$('#tabladatos')
+
+// Buscador por inputs header
+    $('#tabladatos thead tr').clone(true).appendTo( '#tabladatos thead' );
+    $('#tabladatos thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+ 
+//init datatables
+			 var table=$('#tabladatos')
 				.addClass( 'nowrap' )
 				.DataTable( {
+				"pageLength": 15,
 				"deferRender": true,
 				"dom": '<"top"f>rt<"bottom"ip><"clear">',
 				"language": {
@@ -125,15 +154,36 @@ $('#input-b2').fileinput({
 						{ targets: [2, -3], className: 'dt-body-left' }
 					]
 				} );
-		} );
-	
+
+//fin init datatbles
+
+
+    /*
+var table = $('#tabladatos').DataTable( {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+    */
+
+
+
+
+
+
+		} );//fin document.ready
+
+
 	
 		</script>
 		
-		<?php
+
+
+
+
+	<!--			<?php
 					define('NUM_ITEMS_BY_PAGE', 15);
 					require 'conexion/db.php';
-					$query="SELECT * FROM ministro ORDER BY nombre_ministro DESC";
+					$query="SELECT * FROM sentencia ORDER BY id_oficio DESC";
 					
 					$resultado=mysqli_query($conn, $query);
 
@@ -142,35 +192,34 @@ $('#input-b2').fileinput({
 					$total_filas=mysqli_fetch_assoc($resultadototal);
 					$num_total_rows=$total_filas['total_filas'];
 					
-				?> 
+				?> -->
 
 
-		<title>Ministros</title>
+		<title>Sentencias</title>
 	</head>	
 
 		<body>
-			<div class="container" style="width:50%" >
-					<h2 class="text-center">Mantenedor de Ministros</h2>
+			<div class="container">
+				<h2 class="text-center">Mantenedor de sentencias</h2>
 			</div>
-			
-
 
 			<!-- Comienzo mantenedores -->
 
 
-<!--  Ingreso Ministro-->
-			<div class="container"  style="width:50%">
+<!--  Ingreso sentencias-->
+			<div class="container">
 				
 				<div class="form-group">
-					<button type="button"  class="btn btn-primary btn-lg col-lg" data-toggle="modal" data-target="#ingresaoficio">Ingresar Ministro</button>
+					<button type="button"  class="btn btn-primary btn-lg col-lg" data-toggle="modal" data-target="#ingresaoficio">Ingresar Sentencia</button>
 				</div>
 
 				<div class="modal fade " id="ingresaoficio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				  <div class="modal-dialog modal-dialog-centered" role="document">
+				  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				    <!-- Aca va el div para modificar el ancho del modal -->
 				    <div class="modal-content">
 				      
 				      <div class="modal-header  bg-light mb-3">
-							<h5>Ingrese datos de Ministro</h5>
+							<h5>Ingrese datos de sentencia</h5>
 				        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				        	  <span aria-hidden="true">&times;</span>
 				       		 </button>
@@ -180,21 +229,66 @@ $('#input-b2').fileinput({
 			
 		<!-- Formulario ingreso -->
 
-				<form id="fiministro" action="ingministro.php" method="post">
+				<form id="ffolio" action="ingsentencia.php" method="post" enctype="multipart/form-data" >
 							
 								
-								<input type="text" class="form-control form-group" name="nministro"  placeholder="Nombre Ministro" 
-								pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" required>
+								<input type="text" class="form-control form-group" name="rit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" required>
+								
+						 		<div class="input-group form-group">
+									<input  id="datepicker2" class="form-control form-group" name="anio" placeholder="Año" required>
+										<label for="datepicker2">
+											<span class="input-group-text" id="basic-addon2" for="datepicker2" >
+												
+												<i class="fa fa-calendar" style="font-size:24px"></i>
+											</span>
+										</label>
+								</div>
 
-								 <div class="modal-footer">
-							       		<button type="button bnt" class="btn btn-primary">Agregar</button>
-							   </div>
+
+
+			<!--  bootstrap-select comentado para probar select2
+	<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group "  multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES"  required>
+			 -->
+
+<!-- Prueba SELECT2 -->
+	<select name="slMinistro[]" id="slMinistro" class="container form-control form-group mb-3" style="width: 100%"  required>
+				
+
+	</select> <!-- fin select ministros -->
+<!-- fin prueba select2 -->
+
+					<select name="materia" id="materia" class="form-control mb-3" required >
+														<option  name="" value="" style="color:grey">Seleccione Materia</option>
+														<?php 
+														 include "conexion/db.php";
+														 $querymateria="Select distinct materia from materia";
+														 if ($resultado = mysqli_query($conn,$querymateria)){
+														 		while($campomateria=mysqli_fetch_array($resultado)){
+														 			$materia=$campomateria['materia'];
+														 			echo '<option value="'.$materia.'">'.$materia.'</option>';
+														 		}
+
+														 }
+
+														?>
+					</select>
+
+
+					<div  id="submateria"></div> <!-- Carga el select con las submaterias -->
+								
+					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true" data-allowed-file-extensions='["doc", "docx","pdf"]'>
+
+					 <div class="modal-footer">
+				       		<button type="button bnt" class="btn btn-primary">Agregar</button>
+				     </div>
 						</form>
 
 
+					<div id="resultadoinsert"></div> <!-- Eliminar -->
 				      </div>
 				     
 				    </div>
+				    <!-- aca va el div para modificar el ancho del modal -->
 				  </div>
 				</div>
 			
@@ -207,12 +301,18 @@ $('#input-b2').fileinput({
 		
 <!-- Carga de datos en la tabla -->
 <div class="container">
-		<table  id="tabladatos" class="table table-hover table-striped container table-sm order-column compact" style="width:50%">  
+		<table  id="tabladatos" class="table table-hover table-striped container table-sm order-column compact">  
 		  <thead>  
 		    <tr class="active table-primary">  
-		      <th>Nombre Ministro</th>
-		      
-		      <td><img src="images/editar_titulo.svg" style="width:20px"/></td>
+		      <th>F.Ingreso</th>
+		      <th>RIT</th>  
+		      <th>Año</th>
+		      <th>Materia</th>
+		      <th>Submateria</th>
+		      <th>Redactor</th>
+		      <th>Integrante</th>
+		      <th>Integrante</th>
+		      <td><img src="images/doc_titulo.svg" style="width:25px"/></td>
 		      <td><img src="images/borrar_titulo.svg" style="width:30px"/></td>
 			</tr>  
 		  </thead> 
@@ -221,38 +321,49 @@ $('#input-b2').fileinput({
 		
 			<?php
 
-			    $result = $conn->query('SELECT * FROM ministro ORDER BY nombre_ministro DESC');
+
+			if ($num_total_rows > 0) {
+			    $page = false;
+			 
+			    
+			    $result = $conn->query('SELECT * FROM sentencia ORDER BY fechaingreso DESC');
 
 			 
 			    if ($result->num_rows > 0) {
 			        echo '<tr class="table  table-sm">';
-			        
-			         while ($row = $result->fetch_assoc()) {
-			            echo '<td>'.$row['nombre_ministro'].'</td>';
+			        while ($row = $result->fetch_assoc()) {
+			            echo '<td>'.strftime("%d-%m-%Y", strtotime($row['fechaingreso'])).'</td>';
+			            echo '<td>'.$row['rit'].'</td>';
+			            echo '<td>'.$row['anio'].'</td>';
+			            echo '<td>'.$row['materia'].'</td>';
+			            echo '<td>'.$row['submateria'].'</td>';
+				        echo '<td>'.$row['ministro1'].'</td>';
+				        echo '<td>'.$row['ministro2'].'</td>';
+				        echo '<td>'.$row['ministro3'].'</td>';
+			            //Abrir doc
+			            echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/doc.svg" style="width:22px"/></a></td>';
 			            
-			            //Modal editar 
-			            echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" >
-			            <img class="eimg" src="images/editar.svg" style="width:20px"  onclick="ministroEditar('.$row['id_ministro'].',\''.$row['nombre_ministro'].'\')" /></a></td>';
+			            
 			            
 			            //Eliminar
-			             echo '<td ><a  href="#"  data-href="delministro.php?idministro='.$row['id_ministro'].'" class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
-				      
-				     	 echo '</tr>';    
-				      } 
-			       }
-						
-			    ?>
+			            echo '<td ><a  href="#"  data-href="delsentencia.php?idfolio='.$row['id_oficio'].'"  class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
+
+			            /* <button class="btn btn-default" data-href="/delete.php?id=54" data-toggle="modal" data-target="#confirm-delete">Delete record #54</button>*/
+
+			            //echo '<td ><a id="eliminar" href="documentos/'.$row['documento'].'" target="_blank"><img src="images/borrar.svg" style="width:20px"/></a></td>';
+			            //echo '<td>'.$row['documento'].'</td>';
+			        	echo '</tr>';    
+				        }
 			    
-		   </tbody>
-		
-	   </table>
-<!-- fin tabla datos -->
+			    }
+		echo "</tbody>"; //cierre tbody
+		echo "</table>";
 				
-   </div> 	
-			
+    			
+			}
 
-			
-
+			?>
+</div>
 
 <!--  modal Editar-->			
 <div class="modal fade" id="confirm-update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -267,19 +378,63 @@ $('#input-b2').fileinput({
 				      <div class="modal-body" id="editar">
 				
 <!-- formulario editar -->
-				<form id="eministro" action="#" method="post" enctype="multipart/form-data" >
+				<form id="efolio" action="#" method="post" enctype="multipart/form-data" >
 					
 					<input type="hidden" id="id" >
 
-					<input type="text" class="form-control form-group" id="edministro" 
-					pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" placeholder="Nombre Ministro" required >
+					<input type="text" class="form-control form-group" id="erit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4"  required value="">
+								
+					<div class="input-group form-group">
+						<input  type="text" id="edatepicker2" class="form-control form-group" required >
+						<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="edatepicker2"></i></span>
+					</div>
+				<select name="eslMinistro[]" id="eslMinistro[]" class="selectpicker form-control mb-3" data-live-search="true" multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES" required>
+						<!-- Carga select de tabla ministro -->
+						<?php
+						require 'conexion/db.php';
+						$mensaje = "";
+
+								$ministros="SELECT * FROM ministro";
+								//echo $query;
+								$query= mysqli_query($conn,$ministros);
+
+								while($campo = mysqli_fetch_array($query)) {
+									$idMinistro = $campo['id_ministro'];
+									$nombreMinistro = $campo['nombre_ministro'];
+									$apMinistro= $campo['apaterno_ministro'];
+									//$amMinistro = $campo['amaterno_ministro'];
+
+									echo '<option value="'.$nombreMinistro.'">'.$nombreMinistro.'</option>';
+
+								};//Fin while $resultados
+
+						?>						
+
+					</select> <!-- fin select ministros -->
+
+					<select name="emateria" id="emateria" class="form-control mb-3" required >
+														<option  name="" value=""></option>
+														<option  name="Civil" value="Civil">Civil</option>
+														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
+														<option name="Penal" value="Penal">Penal</option>
+														<option name="Laboral" value="Laboral">Laboral</option>
+														<option name="Familia" value="Familia">Familia</option>
+														<option name="Proteccion" value="Proteccion">Protección</option>
+														<option name="jlp" value="jlp">Juzgado Policia Local</option>
+					</select>
+
+
+					<div  id="esubmateria"></div> <!-- Carga el select con las submaterias -->
+								
+
+					<input id="einput" class="file" name="einput" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="false" data-allowed-file-extensions='["doc", "docx","pdf"]' data-msg-placeholder="Reemplazar archivo(opcional)">
 
           <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-											<button type="button btn" class="btn btn-success" id="btnedtmin">Editar</button>
+											<button type="button btn" class="btn btn-success" id="btneditar">Editar</button>
                      <!-- <a class="btn btn-success btn-ok">Editar</a> -->
-          </div>
-        </form>
+                </div>
+              </form>
 
             </div>
         </div>

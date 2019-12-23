@@ -1,4 +1,3 @@
-<!-- Carga select2 de tabla ministro -->
 <?php
 	require 'conexion/db.php';
 	$mensaje = "";
@@ -8,10 +7,9 @@
 		$query= mysqli_query($conn,$ministros);
 		$min =[];
 		while($campo = mysqli_fetch_array($query)) {
-			$idMinistro = $campo['id_ministro'];
 			$nombreMinistro = $campo['nombre_ministro'];
 			
-			$min[] = ['id' => $idMinistro, 'nombre' => $nombreMinistro];
+			$min[] = ['nombre' => $nombreMinistro];
 
 		};//Fin while $resultados
 		//echo $min[];
@@ -22,6 +20,6 @@
 } 
 */
 
-return json_encode($min);
+echo json_encode($min);
 
 ?>						
