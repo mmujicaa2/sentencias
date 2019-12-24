@@ -8,8 +8,9 @@
 		$min =[];
 		while($campo = mysqli_fetch_array($query)) {
 			$nombreMinistro = $campo['nombre_ministro'];
-			
-			$min[] = ['nombre' => $nombreMinistro];
+			//$idMinistro=$campo['id_ministro'];
+			 echo '<option value="'.$nombreMinistro.'">'.$nombreMinistro.'</option>';
+			//$min[] = ['id' => $idMinistro,'nombre' => $nombreMinistro];
 
 		};//Fin while $resultados
 		//echo $min[];
@@ -20,6 +21,6 @@
 } 
 */
 
-echo json_encode($min);
+//echo json_encode($min);
 
 ?>						
