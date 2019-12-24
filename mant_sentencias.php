@@ -22,48 +22,48 @@
 
 
 <!-- Fileinput  krajee-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.js" integrity="sha256-gBMxvh5TatVGO6+k+QUIsmB2hoDh9C4QDmARBh1fLt8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.js" integrity="sha256-gBMxvh5TatVGO6+k+QUIsmB2hoDh9C4QDmARBh1fLt8=" crossorigin="anonymous"></script>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.js" integrity="sha256-JlMWwWbsL9wOJJPB2+JQyNfNwb+bY/MxdcZw0zdJN2g=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.js" integrity="sha256-JlMWwWbsL9wOJJPB2+JQyNfNwb+bY/MxdcZw0zdJN2g=" crossorigin="anonymous"></script>
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
-		
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.css" integrity="sha256-DQU6yrp4ySroKr/kpZm7c03Ac483k2L3NpoKmwdOlcc=" crossorigin="anonymous" />
+
 
 <!--Datepicker bootstrap-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
 
 <!-- Viewport -->	
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 <!-- Bootstrap -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
 <!-- Datatables -->
-		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
 <!--Estilos CSS-->
-		<link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="css/estilo.css">
 
 <!--Scripts-->
-		<script src="js/eventos.js"></script>
+<script src="js/eventos.js"></script>
 
 
 <!--Bootstrap Multiselect CSS y JS y lenguajes-->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css">
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js"></script>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.js" integrity="sha256-tjUcUjAb8ZD4wFw6K6gB1WGIl7tQRzBFXIv909raSZo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.js" integrity="sha256-tjUcUjAb8ZD4wFw6K6gB1WGIl7tQRzBFXIv909raSZo=" crossorigin="anonymous"></script>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/i18n/defaults-es_CL.min.js" integrity="sha256-LKDclYxOa739YTov76uNDqeux8SIf3Wl69FclD8xOxk=" crossorigin="anonymous"></script>
 
 
 <!--select2  -->
@@ -95,22 +95,7 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 <!-- Fin alertify -->
 
-<!-- Inicializa krajee File input----inicializado en el input -->
 
-
-<!--  Inicaliza krajee desde script pero mejor desde propiedades de etiqueta
-<script>
-$('#input-b2').fileinput({
-    language: 'es',
-    showRemove:false,
-    showUpload:false,
-    uploadUrl: "/file-upload-batch/2",
-    allowedFileExtensions: ["jpg", "png", "gif"]
-});
-
-</script>
- -->
- 
 
 <!-- Inicializa Datatables -->
 		<script>
@@ -164,16 +149,6 @@ $('#input-b2').fileinput({
 //fin init datatbles
 
 
-    /*
-var table = $('#tabladatos').DataTable( {
-        orderCellsTop: true,
-        fixedHeader: true
-    } );
-    */
-
-
-
-
 
 
 		} );//fin document.ready
@@ -201,7 +176,7 @@ var table = $('#tabladatos').DataTable( {
 				?> -->
 
 
-		<title>Sentencias</title>
+		<title>Mantenedor de Sentencias</title>
 	</head>	
 
 		<body>
@@ -213,7 +188,7 @@ var table = $('#tabladatos').DataTable( {
 
 
 <!--  Ingreso sentencias-->
-			<div class="container">
+			<div class="container ">
 				
 				<div class="form-group">
 					<button type="button"  class="btn btn-primary btn-lg col-lg" data-toggle="modal" data-target="#ingresaoficio">Ingresar Sentencia</button>
@@ -233,7 +208,7 @@ var table = $('#tabladatos').DataTable( {
 				      
 				      <div class="modal-body" id="inserta">
 			
-		<!-- Formulario ingreso -->
+<!-- Formulario ingreso -->
 
 				<form id="ffolio" action="ingsentencia.php" method="post" enctype="multipart/form-data" >
 							
@@ -249,15 +224,20 @@ var table = $('#tabladatos').DataTable( {
 											</span>
 										</label>
 								</div>
-			<!--  bootstrap-select comentado para probar select2
-	<select name="slMinistro[]" id="slMinistro[]" class="selectpicker mb-3 form-control form-group "  multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES"  required>
-			 -->
+			
 
-<!-- Prueba SELECT2 -->
-	<select name="slMinistro" id="slMinistro" class="mb-3 form-control form-group" required>				
-	</select> <!-- fin select ministros -->
-<!-- fin prueba select2 -->
+					<select name="redactor" id="redactor" class="form-control mb-3" required>
+						<option value="">Redactor</option>
+					</select>
 
+					<select name="integrante1" id="integrante1"  class="form-control mb-3" required>
+						<option value="">Integrante1</option>
+					</select>	
+					<select name="integrante2" id="integrante2"  class="form-control mb-3" required>
+						<option value="">Integrante2</option>
+					</select>
+
+					<!-- Select materias -->
 					<select name="materia" id="materia" class="form-control mb-3" required >
 														<option  name="" value="" style="color:grey">Seleccione Materia</option>
 														<?php 
@@ -278,6 +258,13 @@ var table = $('#tabladatos').DataTable( {
 
 					<div  id="submateria"></div> <!-- Carga el select con las submaterias -->
 								
+					<select name="estado" id="estado" class="form-control mb-3" required>
+						<option value="">Estado sentencia</option>
+						<option value="Pendiente">Pendiente</option>
+						<option value="Confirmada">Confirmada</option>
+						<option value="Rechazada">Rechazada</option>
+
+					</select>
 					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true" data-allowed-file-extensions='["doc", "docx","pdf"]'>
 
 
@@ -299,7 +286,8 @@ var table = $('#tabladatos').DataTable( {
 			
 			</div><!-- cierre div -->
 
-			<!-- Cierre ingreso de sentencias  -->
+
+<!-- Cierre ingreso de sentencias  -->
 
 
 		
@@ -314,9 +302,11 @@ var table = $('#tabladatos').DataTable( {
 		      <th>Materia</th>
 		      <th>Submateria</th>
 		      <th>Redactor</th>
-		      <th>Integrante</th>
-		      <th>Integrante</th>
+		      <th>Integrante1</th>
+		      <th>Integrante2</th>
+			  <th>Estado</th>
 		      <td><img src="images/doc_titulo.svg" style="width:25px"/></td>
+		      <td><img src="images/editar_titulo.svg" style="width:25px"/></td>
 		      <td><img src="images/borrar_titulo.svg" style="width:30px"/></td>
 			</tr>  
 		  </thead> 
@@ -344,10 +334,16 @@ var table = $('#tabladatos').DataTable( {
 				        echo '<td>'.$row['ministro1'].'</td>';
 				        echo '<td>'.$row['ministro2'].'</td>';
 				        echo '<td>'.$row['ministro3'].'</td>';
+				        echo '<td>'.$row['estado'].'</td>';
+			            
 			            //Abrir doc
 			            echo '<td><a href="documentos/'.$row['documento'].'" target="_blank"><img src="images/doc.svg" style="width:22px"/></a></td>';
 			            
 			            
+						//Modal editar 
+				echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" ><img class="eimg" src="images/editar.svg" style="width:20px"  onclick="datosEditar('.$row['id_oficio'].','.$row['rit'].','.$row['anio'].',\''.$row['ministro1'].'\',\''.$row['ministro2'].'\',\''.$row['ministro3'].'\',\''.$row['materia'].'\',\''.$row['submateria'].'\',\''.$row['estado'].'\')"/></a></td>';
+
+
 			            
 			            //Eliminar
 			            echo '<td ><a  href="#"  data-href="delsentencia.php?idfolio='.$row['id_oficio'].'"  class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
@@ -371,7 +367,7 @@ var table = $('#tabladatos').DataTable( {
 
 <!--  modal Editar-->			
 <div class="modal fade" id="confirm-update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
             
                 <div class="modal-header  bg-light mb-3">
@@ -392,43 +388,47 @@ var table = $('#tabladatos').DataTable( {
 						<input  type="text" id="edatepicker2" class="form-control form-group" required >
 						<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="edatepicker2"></i></span>
 					</div>
-				<select name="eslMinistro[]" id="eslMinistro[]" class="selectpicker form-control mb-3" data-live-search="true" multiple data-max-options="3" data-size="3" title="Seleccione ministros" data-lang="es_ES" required>
-						<!-- Carga select de tabla ministro -->
-						<?php
-						require 'conexion/db.php';
-						$mensaje = "";
 
-								$ministros="SELECT * FROM ministro";
-								//echo $query;
-								$query= mysqli_query($conn,$ministros);
+					<select name="eredactor" id="eredactor" class="form-control mb-3" required>
+						<option value="">Redactor</option>
+					</select>
 
-								while($campo = mysqli_fetch_array($query)) {
-									$idMinistro = $campo['id_ministro'];
-									$nombreMinistro = $campo['nombre_ministro'];
-									$apMinistro= $campo['apaterno_ministro'];
-									//$amMinistro = $campo['amaterno_ministro'];
+					<select name="eintegrante1" id="eintegrante1"  class="form-control mb-3" required>
+						<option value="">Integrante1</option>
+					</select>	
+					<select name="eintegrante2" id="eintegrante2"  class="form-control mb-3" required>
+						<option value="">Integrante2</option>
+					</select>
+				
 
-									echo '<option value="'.$nombreMinistro.'">'.$nombreMinistro.'</option>';
-
-								};//Fin while $resultados
-
-						?>						
-
-					</select> <!-- fin select ministros -->
-
+					<!-- Select materias -->
 					<select name="emateria" id="emateria" class="form-control mb-3" required >
-														<option  name="" value=""></option>
-														<option  name="Civil" value="Civil">Civil</option>
-														<option name="Ejecutivas" value="Ejecutivas">Ejecutivas</option>
-														<option name="Penal" value="Penal">Penal</option>
-														<option name="Laboral" value="Laboral">Laboral</option>
-														<option name="Familia" value="Familia">Familia</option>
-														<option name="Proteccion" value="Proteccion">Protección</option>
-														<option name="jlp" value="jlp">Juzgado Policia Local</option>
+														<option  name="" value="" style="color:grey">Seleccione Materia</option>
+														<?php 
+														 include "conexion/db.php";
+														 $querymateria="Select distinct materia from materia";
+														 if ($resultado = mysqli_query($conn,$querymateria)){
+														 		while($campomateria=mysqli_fetch_array($resultado)){
+														 			$materia=$campomateria['materia'];
+														 			echo '<option value="'.$materia.'">'.$materia.'</option>';
+														 		}
+
+														 }
+
+														?>
 					</select>
 
 
+
 					<div  id="esubmateria"></div> <!-- Carga el select con las submaterias -->
+								
+					<select name="eestado" id="eestado" class="form-control mb-3" required>
+						<option value="">Estado sentencia</option>
+						<option value="Pendiente">Pendiente</option>
+						<option value="Confirmada">Confirmada</option>
+						<option value="Rechazada">Rechazada</option>
+
+					</select>
 								
 
 					<input id="einput" class="file" name="einput" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="false" data-allowed-file-extensions='["doc", "docx","pdf"]' data-msg-placeholder="Reemplazar archivo(opcional)">

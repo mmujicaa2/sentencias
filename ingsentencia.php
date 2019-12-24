@@ -11,6 +11,7 @@
         //$ministro=$_POST['slMinistro'];
         $materia=$_POST['materia'];
         $submateria=$_POST['submateria'];
+        $estado=$_POST['estado'];
         //$documento= $_POST['input-b2'];
 
         //Subir archivo a carpeta
@@ -21,8 +22,8 @@
 
             if(move_uploaded_file($tempdoc, $directorio.$prefijodoc.$nombredoc))
                     {
-                          $qinserta="INSERT INTO sentencia (rit,anio,ministro1,ministro2,ministro3,materia,submateria,documento) 
-                        VALUES('$rit','$anio','$redactor','$integrante1','$integrante2','$materia','$submateria','$prefijodoc$nombredoc')";
+                          $qinserta="INSERT INTO sentencia (rit,anio,ministro1,ministro2,ministro3,materia,submateria,estado,documento) 
+                        VALUES('$rit','$anio','$redactor','$integrante1','$integrante2','$materia','$submateria','$estado','$prefijodoc$nombredoc')";
                             
                             //echo $qinserta;
 

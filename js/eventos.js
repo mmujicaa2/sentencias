@@ -117,9 +117,10 @@ $('#btneditar').on('click', function(e) {
             var id = $("#id").val();
             var erit = $("input#erit").val();
             var eanio = $("#edatepicker2").val();
-            var eslMinistro = $("select#eslMinistro").val();
+            //var eslMinistro = $("select#eslMinistro").val();
             var emateria = $("select#emateria").val();
             var esubmateria = $("select#submateria").val();
+            var estado = $("select#eestado").val();
 
            //var einput = $("#einput")prop(files)[0];
             alertify.success(einput);
@@ -214,18 +215,25 @@ function selectMinistro(){
 
 
 
-function datosEditar(id,rit,anio){
+function datosEditar(id,rit,anio,redactor,integrante1,integrante2,materia,submateria,estado){
     //alert(anio);
   $('#id').attr('value', id).change();
   $('#erit').attr('value', rit).change();
+  $('#erit').prop('disabled', true);
   $('#edatepicker2').attr('value', anio).change();
-    
-  /* Prueba alertify
-          var a=$('#id').val();
-          var b=$('#erit').val();
-          var c=$('#edatepicker2').val();
-          alertify.success(a+' '+b+' '+c);
-           */
+  $('#edatepicker2').prop('disabled', true);
+
+  
+  $('#eredactor').prop('value', redactor).change();
+  $('#eintegrante1').prop('value', integrante1).change();
+  $('#eintegrante2').prop('value', integrante2).change();
+  $('#emateria').prop('value', materia).change();
+  $('#esubmateria').prop('value', submateria).change();
+  $('#eestado').prop('value', estado).change();  // $('#eestado').prop('value', estado).change();
+
+
+
+
 }
  
 
@@ -268,6 +276,9 @@ $.ajax({
             $('#redactor').append(response);
             $('#integrante1').append(response);
             $('#integrante2').append(response);
+            $('#eredactor').append(response);
+            $('#eintegrante1').append(response);
+            $('#eintegrante2').append(response);
         }
     });
 }
