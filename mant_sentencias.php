@@ -402,25 +402,29 @@
 				
 
 					<!-- Select materias -->
-					<select name="emateria" id="emateria" class="form-control mb-3" required >
-														<option  name="" value="" style="color:grey">Seleccione Materia</option>
-														<?php 
-														 include "conexion/db.php";
-														 $querymateria="Select distinct materia from materia";
-														 if ($resultado = mysqli_query($conn,$querymateria)){
-														 		while($campomateria=mysqli_fetch_array($resultado)){
-														 			$materia=$campomateria['materia'];
-														 			echo '<option value="'.$materia.'">'.$materia.'</option>';
-														 		}
+				<select name="emateria" id="emateria" class="form-control mb-3" required >
+					<option  name="" value="" style="color:grey">Seleccione Materia</option>
+								<?php 
+								 include "conexion/db.php";
+								 $querymateria="Select distinct materia from materia";
+								 if ($resultado = mysqli_query($conn,$querymateria)){
+								 		while($campomateria=mysqli_fetch_array($resultado)){
+								 			$materia=$campomateria['materia'];
+								 			echo '<option value="'.$materia.'">'.$materia.'</option>';
+								 		}
 
-														 }
+								 }
 
-														?>
+								?>
 					</select>
 
 
+					<select name="esubmateria" id="esubmateria" class="form-control mb-3" required>
+						
 
-					<div  id="esubmateria"></div> <!-- Carga el select con las submaterias -->
+
+					</select>
+					<!-- <div  id="esubmateria"></div>  --><!-- Carga el select con las submaterias -->
 								
 					<select name="eestado" id="eestado" class="form-control mb-3" required>
 						<option value="">Estado sentencia</option>

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-
+//carga ministros al cargar la pagina
 cargaministros();
 
 $('#slMinistro').select2({
@@ -78,6 +78,14 @@ $('.modal').on('hidden.bs.modal', function(){//limpia input  cuando cierra modal
      location.reload();
 });
 
+$('#confirm-update').on("shown.bs.modal", function () { //no usado
+   //$('#esubmateria').prop('value', submateria).change();
+   //alert("despues");
+     //$("#auctionLabel").html('Edit auction with id '+ $(e.relatedTarget).data('id'));
+     //$("#auctionTitle").html($(e.relatedTarget).data('title'));
+    //$('#edit-auction-modal ').find('input#input-id').val($(e.relatedTarget).data('title'))
+
+});
 
  $("#materia").on("change", function(){
   var materia = $("select#materia").val();
@@ -227,8 +235,51 @@ function datosEditar(id,rit,anio,redactor,integrante1,integrante2,materia,submat
   $('#eredactor').prop('value', redactor).change();
   $('#eintegrante1').prop('value', integrante1).change();
   $('#eintegrante2').prop('value', integrante2).change();
+  
+  //select materia
   $('#emateria').prop('value', materia).change();
+  //$('#emateria[value=materia]').attr('selected','selected');
+
+//select submateria
   $('#esubmateria').prop('value', submateria).change();
+
+  $('#confirm-update').on("shown.bs.modal", function () { //metod pasado participio shown para modidicar submateria despues de la puta carga del modal , me cambio a angular :(
+   $('#esubmateria').prop('value', submateria).change();
+  //alert("bbbb");
+     //$("#auctionLabel").html('Edit auction with id '+ $(e.relatedTarget).data('id'));
+     //$("#auctionTitle").html($(e.relatedTarget).data('title'));
+    //$('#edit-auction-modal ').find('input#input-id').val($(e.relatedTarget).data('title'))
+
+});
+  //$("#esubmateria").html("<option value=\''submateria'\' selected">submateria</option>);
+
+ 
+  //$('#esubmateria').attr('selected', 'selected');
+  
+//$('#esubmateria option[value=submateria]').attr('selected','selected');
+
+//$('#esubmateria' option[value="Compensación económica"]).attr('selected','selected');
+  //$('#esubmateria').attr('selected', 'selected');
+  //$('#esubmateria').prop('value', submateria).change();
+   //$("select#submateria").val(submateria).change();
+  
+  //$("#esubmateria option[value=\'submateria\']").attr('selected','selected');
+  //$('#esubmateria').prop('selected', submateria);
+ //$('#esubmateria').attr('value', submateria).change();
+  
+  
+/* Test carga con boton submateria
+
+  $( "#miboton" ).on( "click", function() {
+    alert(submateria + "no he clicekado nada");
+    //$("select#submateria").val('submateria').change();
+    //$('#esubmateria').prop('value', submateria).change();
+
+  });
+  $("#miboton").trigger( "click" ).change();
+
+*/
+
   $('#eestado').prop('value', estado).change();  // $('#eestado').prop('value', estado).change();
 
 
