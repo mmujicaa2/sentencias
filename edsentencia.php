@@ -1,102 +1,83 @@
 <?php 
-var_dump($_POST);
-echo "vardunmp----<br>"
+//var_dump($_POST);
+
  
  $id=$_POST['id'];
- $erit= $_POST['erit'];
- $eanio= $_POST['eanio'];
- $eministro=$_POST['eslMinistro'];
+ //$erit= $_POST['erit'];
+ //$eanio= $_POST['eanio'];
+ $eredactor= $_POST['eredactor'];
+ $eintegrante1= $_POST['eintegrante1'];
+ $eintegrante2= $_POST['eintegrante2'];
  $emateria=$_POST['emateria'];
  $esubmateria=$_POST['esubmateria'];
- $edocumento= $_FILES['einput'];
-
-echo "edocumento es: ";
-echo  $_FILES['einput']['name'];
-echo  $_FILES['einput']['size'];
-echo  $_FILES['einput']['temp_name'];
-echo "---fin edocumento <br>";
- 
- echo "el valor de ID es.....";
-echo $id;
- echo ".....<br>";
- 
- echo $erit;
- echo "<br>";
- 
- echo $eanio;
- echo "<br>";
- 
- echo $edocumento;
- echo "<br>";
+ $eestado=$_POST['eestado'];
 
 
-echo $eministro[0];
-echo "<br>";
-
-
-include_once('conexion/db.php');
 
 if ($_POST['id']) {
 
+				
+				include_once('conexion/db.php');
         
-    if ($_FILES['einput']) {
         
-        $directorio = 'documentos/';
+    if ($_FILES['einput']['name'] !="") {
         $nombredoc=$_FILES['einput']['name'];
-        $tempdoc=$edocumento['tmp_name'];
+        $directorio = 'documentos/';
+        $tempdoc=$_FILES['einput']['tmp_name'];
         $prefijodoc=date("d.m.y-");
-        $finaldoc=$directorio.$prefijodoc.$nombredoc;
-        echo 'Documento final es: ';
-        echo $finaldoc;
-        echo "-----";
 
+        $finaldoc=$directorio.$prefijodoc.$nombredoc;
+        
         //move_uploaded_file($tempdoc, $directorio.$prefijodoc.$nombredoc);
         move_uploaded_file($tempdoc, $finaldoc);
           $qedita="UPDATE sentencia set 
-          rit=$erit,
-          anio=$eanio,
-          ministro1='$eministro[0]',
-          ministro2='$eministro[1]',
-          ministro3='$eministro[2]',
+          
+          ministro1='$eredactor',
+          ministro2='$eintegrante1',
+          ministro3='$eintegrante2',
           materia='$emateria',
           submateria='$esubmateria',
-          documento='$directorio.$prefijodoc.$nombredoc'
+          estado='$eestado',
+          documento='$prefijodoc$nombredoc'
           where id_oficio=$id";
 
           echo $qedita;
+          echo "con subir archivo";
 
         }// fin del if    
 
         else{
           $qedita="UPDATE sentencia set 
-          rit=$erit,
-          anio=$eanio,
-          ministro1='$eministro[0]',
-          ministro2='$eministro[1]',
-          ministro3='$eministro[2]',
+          
+          ministro1='$eredactor',
+          ministro2='$eintegrante1',
+          ministro3='$eintegrante2',
           materia='$emateria',
           submateria='$esubmateria',
+          estado='$eestado'
           where id_oficio=$id";
 
           echo $qedita;
+          echo "sin subir archivo";
         }
         
 
 
         if(mysqli_query($conn,$qedita)){
-                echo "actualizdao ok";
-                        //  header("Location:indexdt.php");
+                echo "Actualizado OK";
+                header("Location:mant_sentencias.php");
               }
         else{
-                echo "Falló edicion, intentelo denuevo o contactese con el Webmaster mmujica@pjud.cl";
+               echo "Falló edicion, intentelo denuevo o contactese con el Webmaster mmujica@pjud.cl";
+               header("Location:mant_sentencias.php");
             }
 
 } //fin isste id
 else
 {
     echo "no entra a al if";
+   // header("Location:mant_sentencias.php");
 }
-
       
  ?>
 

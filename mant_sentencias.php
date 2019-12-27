@@ -256,15 +256,15 @@
 
 
 
-					<div  id="submateria"></div> <!-- Carga el select con las submaterias -->
+					<div  id="submateria"></div> <!-- Carga el select con las submaterias  dependiendo de materia-->
 								
 					<select name="estado" id="estado" class="form-control mb-3" required>
 						<option value="">Estado sentencia</option>
 						<option value="Pendiente">Pendiente</option>
 						<option value="Confirmada">Confirmada</option>
 						<option value="Rechazada">Rechazada</option>
-
 					</select>
+					
 					<input id="input-b2" class="file" name="input-b2" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="true" data-allowed-file-extensions='["doc", "docx","pdf"]'>
 
 
@@ -378,15 +378,20 @@
 				      <div class="modal-body" id="editar">
 				
 <!-- formulario editar -->
-				<form id="efolio" action="#" method="post" enctype="multipart/form-data" >
+				<form id="efolio" action="edsentencia.php" method="post" enctype="multipart/form-data" >
 					
-					<input type="hidden" id="id" >
+					<input type="hidden" id="id" name="id">
 
-					<input type="text" class="form-control form-group" id="erit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4"  required value="">
+					<input type="text" class="form-control form-group" id="erit" name="erit" placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4"   >
 								
 					<div class="input-group form-group">
-						<input  type="text" id="edatepicker2" class="form-control form-group" required >
-						<span class="input-group-text" id="basic-addon2" for="datepicker2" ><i class="fa fa-calendar" for="edatepicker2"></i></span>
+						<input  type="text" id="edatepicker2" name="eanio" class="form-control form-group"  >
+						<label for="edatepicker2">
+						<span class="input-group-text" id="basic-addon2" for="edatepicker2" >
+
+							<i class="fa fa-calendar" style="font-size:24px" for="edatepicker2"></i>
+						</span>
+						</label>
 					</div>
 
 					<select name="eredactor" id="eredactor" class="form-control mb-3" required>
@@ -420,9 +425,6 @@
 
 
 					<select name="esubmateria" id="esubmateria" class="form-control mb-3" required>
-						
-
-
 					</select>
 					<!-- <div  id="esubmateria"></div>  --><!-- Carga el select con las submaterias -->
 								
@@ -431,10 +433,8 @@
 						<option value="Pendiente">Pendiente</option>
 						<option value="Confirmada">Confirmada</option>
 						<option value="Rechazada">Rechazada</option>
-
 					</select>
 								
-
 					<input id="einput" class="file" name="einput" type="file" data-show-preview="false" data-language="es" data-show-remove="false" data-show-cancel="false" data-show-upload="false" data-required="false" data-allowed-file-extensions='["doc", "docx","pdf"]' data-msg-placeholder="Reemplazar archivo(opcional)">
 
           <div class="modal-footer">

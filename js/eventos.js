@@ -120,41 +120,46 @@ $('#btneditar').on('click', function(e) {
 
 
 
-$('#btneditar').on('click', function(e) {
-            e.preventDefault(); 
-            var id = $("#id").val();
+$('#btneditar2').on('click', function(e) {  //lecambie nmbre para que no se active mientras pruebo
+            //e.preventDefault(); 
+            var id = $("input#id").val();
             var erit = $("input#erit").val();
             var eanio = $("#edatepicker2").val();
-            //var eslMinistro = $("select#eslMinistro").val();
+            var eredactor=$("select#eredactor").val();
+            var eintegrante1=$("select#eintegrante1").val();
+            var eintegrante2=$("select#eintegrante2").val();
             var emateria = $("select#emateria").val();
-            var esubmateria = $("select#submateria").val();
-            var estado = $("select#eestado").val();
+            var esubmateria = $("select#esubmateria").val();
+            var eestado = $("select#eestado").val();
+            var einput = $("input#einput").val();
+            
+            //alertify.success(eestado);
 
-           //var einput = $("#einput")prop(files)[0];
-            alertify.success(einput);
 
-
-                        $.ajax({                        
+                          $.ajax({                        
                             data: {
                                 id:id,
                                 erit:erit,
                                 eanio:eanio,
-                                eslMinistro:eslMinistro,
+                                eredactor:eredactor,
+                                eintegrante1:eintegrante1,
+                                eintegrante2:eintegrante2,
                                 emateria:emateria,
                                 esubmateria:esubmateria,
-                                einput:einput,
+                                eestado:eestado,
+                                einput:einput
                             },
                             url:"edsentencia.php",
                             type:"POST",
-                            contentType: false,
-                            procesData: false,       
+                            dataType: 'json',
+                                 
                             
                             success: function(data)             
                             {
                                alertify.success(data);
                             }
 
-                        });       
+                        });  
 
 
     });
@@ -244,46 +249,10 @@ function datosEditar(id,rit,anio,redactor,integrante1,integrante2,materia,submat
   $('#esubmateria').prop('value', submateria).change();
 
   $('#confirm-update').on("shown.bs.modal", function () { //metod pasado participio shown para modidicar submateria despues de la puta carga del modal , me cambio a angular :(
-   $('#esubmateria').prop('value', submateria).change();
-  //alert("bbbb");
-     //$("#auctionLabel").html('Edit auction with id '+ $(e.relatedTarget).data('id'));
-     //$("#auctionTitle").html($(e.relatedTarget).data('title'));
-    //$('#edit-auction-modal ').find('input#input-id').val($(e.relatedTarget).data('title'))
-
-});
-  //$("#esubmateria").html("<option value=\''submateria'\' selected">submateria</option>);
-
- 
-  //$('#esubmateria').attr('selected', 'selected');
-  
-//$('#esubmateria option[value=submateria]').attr('selected','selected');
-
-//$('#esubmateria' option[value="Compensación económica"]).attr('selected','selected');
-  //$('#esubmateria').attr('selected', 'selected');
-  //$('#esubmateria').prop('value', submateria).change();
-   //$("select#submateria").val(submateria).change();
-  
-  //$("#esubmateria option[value=\'submateria\']").attr('selected','selected');
-  //$('#esubmateria').prop('selected', submateria);
- //$('#esubmateria').attr('value', submateria).change();
-  
-  
-/* Test carga con boton submateria
-
-  $( "#miboton" ).on( "click", function() {
-    alert(submateria + "no he clicekado nada");
-    //$("select#submateria").val('submateria').change();
-    //$('#esubmateria').prop('value', submateria).change();
-
-  });
-  $("#miboton").trigger( "click" ).change();
-
-*/
+      $('#esubmateria').prop('value', submateria).change();
+    });
 
   $('#eestado').prop('value', estado).change();  // $('#eestado').prop('value', estado).change();
-
-
-
 
 }
  
