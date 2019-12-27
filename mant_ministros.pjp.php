@@ -454,6 +454,8 @@ $('#input-b2').fileinput({
 
     </script>
 <!-- Fin script llama  eliminar -->
-
+<div class="footer">
+	<p class="rights"><a href="mailto:mmujica@pjud.cl">Desarrollado por Marcelo Mujica</a></p>
+</div>
 	</body>		
 </html>
