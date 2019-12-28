@@ -122,7 +122,8 @@
 			 var table=$('#tabladatos')
 				.addClass( 'nowrap' )
 				.DataTable( {
-				"pageLength": 15,
+				"order": [[ 0, "desc" ]],
+				"pageLength": 12,
 				"deferRender": true,
 				"dom": '<"top"f>rt<"bottom"ip><"clear">',
 				"language": {
@@ -180,7 +181,7 @@
 	</head>	
 
 		<body>
-			<div class="container">
+			<div class="container-fluid">
 				<h2 class="text-center">Mantenedor de sentencias</h2>
 			</div>
 
@@ -188,7 +189,7 @@
 
 
 <!--  Ingreso sentencias-->
-			<div class="container ">
+			<div class="container">
 				
 				<div class="form-group">
 					<button type="button"  class="btn btn-primary btn-lg col-lg" data-toggle="modal" data-target="#ingresaoficio">Ingresar Sentencia</button>
@@ -270,7 +271,7 @@
 
 
 					 <div class="modal-footer">
-				       		<button type="button bnt" class="btn btn-primary">Agregar</button>
+				       		<button id="btnagregar" type="button bnt" class="btn btn-primary">Agregar</button>
 				     </div>
 						</form>
 
@@ -292,7 +293,7 @@
 
 		
 <!-- Carga de datos en la tabla -->
-<div class="container">
+<div class="container-fluid">
 		<table  id="tabladatos" class="table table-hover table-striped container table-sm order-column compact">  
 		  <thead>  
 		    <tr class="active table-primary">  

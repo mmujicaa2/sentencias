@@ -197,8 +197,30 @@ $('#btnedtmin').on('click', function(e) {
     });
 
   
+$('#btnagregar').on('click', function(e) {
+  //e.preventDefault();
+  if (($('#redactor').val() == $('#integrante1').val()) || ($('#redactor').val() == $('#integrante2').val()) || ($('#integrante1').val() == $('#integrante2').val())  )
 
-//$("div.bottom").addClass("container");
+  {
+    alertify.error ("Debe seleccionar diferentes ministros!");
+    return false;
+  }
+
+
+});
+
+
+$('#btneditar').on('click', function(e) {
+  //e.preventDefault();
+  if (($('#eredactor').val() == $('#eintegrante1').val()) || ($('#eredactor').val() == $('#eintegrante2').val()) || ($('#eintegrante1').val() == $('#eintegrante2').val())  )
+
+  {
+    alertify.error ("Debe seleccionar diferentes ministros!");
+    return false;
+  }
+
+
+});
 
 
 

@@ -12,15 +12,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-<!-- Jquery mal 
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
- -->
-
-
-
 <!-- Fileinput  krajee-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/fileinput.js" integrity="sha256-gBMxvh5TatVGO6+k+QUIsmB2hoDh9C4QDmARBh1fLt8=" crossorigin="anonymous"></script>
 
@@ -48,6 +39,20 @@
 <!-- Datatables -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+
+<!-- Datatables exportar -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+
+
+<!-- Fin librerias Datatables Exportar -->
+
 
 <!--Estilos CSS-->
 <link rel="stylesheet" href="css/estilo.css">
@@ -122,9 +127,12 @@
 			 var table=$('#tabladatos')
 				.addClass( 'nowrap' )
 				.DataTable( {
-				"pageLength": 15,
+				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+				"buttons": ['excel', 'pdf'],
+				"order": [[ 1, "desc" ]],
+				"pageLength": 12,
 				"deferRender": true,
-				"dom": '<"top"f>rt<"bottom"lip><"clear">',
+				"dom": '<"top"f>rt<"bottom"lipB><"clear">',
 				"language": {
 				"searchPlaceholder": "Buscar por cualquier criterio",
 	            "lengthMenu": "Mostrar _MENU_ filas por página",
@@ -180,7 +188,7 @@
 	</head>	
 
 		<body>
-			<div class="container">
+			<div class="container-fluid">
 				<h2 class="text-center">Buscador de sentencias</h2>
 			</div>
 
@@ -268,7 +276,7 @@
 
 
 					 <div class="modal-footer">
-				       		<button type="button bnt" class="btn btn-primary">Agregar</button>
+				       		<button id="btnagregar" type="button bnt" class="btn btn-primary">Agregar</button>
 				     </div>
 						</form>
 
