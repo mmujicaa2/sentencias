@@ -73,4 +73,16 @@ thead input {
     margin: 0 0 15px 0px;
 }
 
+.navbar-nav .navbar-center {
+    position: relative;
+    left: 50%;
+    transform: translatex(-50%);
+    font-size: 30px;
 
+}
+
+@media only screen and (min-width: 900px) {
+        .navClass{
+            width: 900px !important; 
+            margin: auto !important;
+        }

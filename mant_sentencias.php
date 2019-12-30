@@ -214,7 +214,7 @@
 				<form id="ffolio" action="ingsentencia.php" method="post" enctype="multipart/form-data" >
 							
 								
-								<input type="text" class="form-control form-group" name="rit"  placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4" required>
+								<input type="text" class="form-control form-group" name="rit"  placeholder="Rol Corte" pattern="[0-9]{1,5}" maxlength="5" required>
 								
 						 		<div class="input-group form-group">
 									<input  id="datepicker2" class="form-control form-group" name="anio" placeholder="Año" required>
@@ -262,6 +262,7 @@
 					<select name="estado" id="estado" class="form-control mb-3" required>
 						<option value="">Estado sentencia</option>
 						<option value="Pendiente">Pendiente</option>
+						<option value="Firme">Firme</option>
 						<option value="Confirmada">Confirmada</option>
 						<option value="Rechazada">Rechazada</option>
 					</select>
@@ -372,7 +373,7 @@
             <div class="modal-content">
             
                 <div class="modal-header  bg-light mb-3">
-                    <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                    <h4 class="modal-title" id="myModalLabel">Editar Sentencia</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -383,7 +384,7 @@
 					
 					<input type="hidden" id="id" name="id">
 
-					<input type="text" class="form-control form-group" id="erit" name="erit" placeholder="Rol Corte" pattern="[0-9]{1,4}" maxlength="4"   >
+					<input type="text" class="form-control form-group" id="erit" name="erit" placeholder="Rol Corte" pattern="[0-9]{1,5}" maxlength="5"   >
 								
 					<div class="input-group form-group">
 						<input  type="text" id="edatepicker2" name="eanio" class="form-control form-group"  >
@@ -432,6 +433,7 @@
 					<select name="eestado" id="eestado" class="form-control mb-3" required>
 						<option value="">Estado sentencia</option>
 						<option value="Pendiente">Pendiente</option>
+						<option value="Firme">Firme</option>
 						<option value="Confirmada">Confirmada</option>
 						<option value="Rechazada">Rechazada</option>
 					</select>
@@ -461,7 +463,7 @@
             <div class="modal-content">
             
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Eliminar</h4>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar Sentencia</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     
                 </div>

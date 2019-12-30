@@ -429,6 +429,7 @@
 								
 					<select name="eestado" id="eestado" class="form-control mb-3" required>
 						<option value="">Estado sentencia</option>
+						<option value="Firme">Firme</option>
 						<option value="Pendiente">Pendiente</option>
 						<option value="Confirmada">Confirmada</option>
 						<option value="Rechazada">Rechazada</option>
