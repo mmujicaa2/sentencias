@@ -112,7 +112,7 @@ $('#input-b2').fileinput({
 		<?php
 					define('NUM_ITEMS_BY_PAGE', 15);
 					require 'conexion/db.php';
-					$query="SELECT * FROM ministro ORDER BY nombre_ministro DESC";
+					$query="SELECT * FROM materias ORDER BY materia DESC";
 					
 					$resultado=mysqli_query($conn, $query);
 
@@ -124,12 +124,12 @@ $('#input-b2').fileinput({
 				?> 
 
 
-		<title>Ministros</title>
+		<title>Materias</title>
 	</head>	
 
 		<body>
 			<div class="container" style="width:50%" >
-					<h2 class="text-center">Mantenedor de Ministros</h2>
+					<h2 class="text-center">Mantenedor de Materias</h2>
 			</div>
 			
 
@@ -141,15 +141,15 @@ $('#input-b2').fileinput({
 			<div class="container"  style="width:50%">
 				
 				<div class="form-group">
-					<button type="button"  class="btn btn-primary btn-lg col-lg" data-toggle="modal" data-target="#ingresaoficio">Ingresar Ministro</button>
+					<button type="button"  class="btn btn-primary btn-lg col-lg" data-toggle="modal" data-target="#ingmateria">Ingresar Materia</button>
 				</div>
 
-				<div class="modal fade " id="ingresaoficio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade " id="ingmateria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-dialog-centered" role="document">
 				    <div class="modal-content">
 				      
 				      <div class="modal-header  bg-light mb-3">
-							<h5>Ingrese datos de Ministro</h5>
+							<h5>Ingrese Materia</h5>
 				        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				        	  <span aria-hidden="true">&times;</span>
 				       		 </button>
@@ -159,10 +159,10 @@ $('#input-b2').fileinput({
 			
 		<!-- Formulario ingreso -->
 
-				<form id="fiministro" action="ingministro.php" method="post">
+				<form id="fimateria" action="ingmateria.php" method="post">
 							
 								
-								<input type="text" class="form-control form-group" name="nministro"  placeholder="Nombre Ministro" 
+								<input type="text" class="form-control form-group" name="nmateria"  placeholder="Nombre Materia" 
 								pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" required>
 
 								 <div class="modal-footer">
@@ -189,7 +189,7 @@ $('#input-b2').fileinput({
 		<table  id="tabladatos" class="table table-hover table-striped container table-sm order-column compact" style="width:50%">  
 		  <thead>  
 		    <tr class="active table-primary">  
-		      <th>Nombre Ministro</th>
+		      <th>Nombre Materia</th>
 		      
 		      <td><img src="images/editar_titulo.svg" style="width:20px"/></td>
 		      <td><img src="images/borrar_titulo.svg" style="width:30px"/></td>
@@ -200,21 +200,22 @@ $('#input-b2').fileinput({
 		
 			<?php
 
-			    $result = $conn->query('SELECT * FROM ministro ORDER BY nombre_ministro DESC');
+			    $result = $conn->query('SELECT DISTINCT materia FROM materia');
 
 			 
 			    if ($result->num_rows > 0) {
 			        echo '<tr class="table  table-sm">';
 			        
 			         while ($row = $result->fetch_assoc()) {
-			            echo '<td>'.$row['nombre_ministro'].'</td>';
+			            echo '<td>'.$row['materia'].'</td>';
 			            
 			            //Modal editar 
-			            echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" >
-			            <img class="eimg" src="images/editar.svg" style="width:20px"  onclick="ministroEditar('.$row['id_ministro'].',\''.$row['nombre_ministro'].'\')" /></a></td>';
+			            echo '<td ><a  href="mant_submaterias.php?materia='.$row['materia'].'">
+			            <img class="eimg" src="images/editar.svg" style="width:20px" /></a></td>';
+
 			            
 			            //Eliminar
-			             echo '<td ><a  href="#"  data-href="delministro.php?idministro='.$row['id_ministro'].'" class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
+			             echo '<td ><a  href="#"  data-href="delmateria.php?materia='.$row['materia'].'" class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
 				      
 				     	 echo '</tr>';    
 				      } 

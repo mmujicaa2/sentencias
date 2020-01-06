@@ -4,47 +4,7 @@ $(document).ready(function(){
 //carga ministros al cargar la pagina
 cargaministros();
 
-$('#slMinistro').select2({
-      theme: 'bootstrap',
-      language: "es",
-      multiple: true, //multiselect
-      placeholder:  'Redactor,Integrante1,Integrante2',
-      allowClear: true, //permite X para eliminar seleccoin
-      dropdownParent: $('#ingresaoficio'), //Para no salirse del modal
-      maximumSelectionLength: 3, //maximo de seleccion
-          ajax: {
-                  url: 'select2ministros.php',
-                  dataType: 'json',
-                 processResults: function (data) {
-                      return {
-                        results: $.map(data, function(obj) {
-                          return { id: obj.id, text: obj.nombre };
-                        })
-                      };
-                    }
-              },
-
-
-    });
-
-$("#slMinistro").on("select2:select", function (evt) { //para mantener orden de seleccion y luego volcarlo a la BBDD
-  var element = evt.params.data.element;
-  var $element = $(element);
-  
-  $element.detach();
-  $(this).append($element);
-  $(this).trigger("change");
-});
-
-
    
-
-$("#boton").on("click", function(){
-               alert ($('#slMinistro').val());
-               
-               });
-
-
 
 //$('select').selectpicker();
 
