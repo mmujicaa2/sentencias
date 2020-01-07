@@ -165,7 +165,7 @@ $('#input-b2').fileinput({
 								<input type="text" class="form-control form-group" name="nsubmateria"  placeholder="Nombre Submateria" 
 								pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" required>
 
-								<input type="hidden" name="nmateria"   value="<?php $_GET['materia'] ?>"    >
+								<input type="hidden" name="nmateria"   value="<?php echo $_GET['materia'] ?>"    >
 								
 
 
