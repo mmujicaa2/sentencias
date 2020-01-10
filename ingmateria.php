@@ -2,8 +2,9 @@
         include_once('conexion/db.php');
 
         $materia= $_POST['nmateria'];
+        $submateria= $_POST['nsubmateria'];
         
-        $qinserta="INSERT INTO materia (materia) VALUES('$materia')";
+        $qinserta="INSERT INTO materia (materia,submateria) VALUES('$materia','$submateria')";
                 
                 echo $qinserta;
 

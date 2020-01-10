@@ -68,6 +68,8 @@ $('#confirm-update').on("shown.bs.modal", function () { //no usado
 
 
 
+
+
 /*
 $('#btneditar').on('click', function(e) {
         e.preventDefault();
@@ -123,6 +125,40 @@ $('#btneditar2').on('click', function(e) {  //lecambie nmbre para que no se acti
 
 
     });
+
+$('#btnedtsub').on('click', function(e) {
+            e.preventDefault(); 
+           
+            var id = $("#idsub").val();
+            var submateria = $("input#submateria").val();
+            
+             alert(id);
+
+             alert(submateria);
+
+
+         $.ajax({                        
+                    data: {id:id,submateria:submateria},
+                    url:"edsubmateria.php",
+                    type:"POST",
+                    // contentType: false,
+                    // procesData: false,       
+                    
+                    success: function(data)             
+                    {
+                       //$('#confirm-update').modal('hide');
+                       var msg = alertify.success(data);
+                       msg.delay(1).setContent(data);
+                       setTimeout(function() {$('#confirm-update').modal('hide');}, 1000);
+                       
+                    }
+
+                });       
+
+
+    });
+
+
 
 
 $('#btnedtmin').on('click', function(e) {

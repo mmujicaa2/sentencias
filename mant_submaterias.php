@@ -129,7 +129,7 @@ $('#input-b2').fileinput({
 
 		<body>
 			<div class="container" style="width:50%" >
-					<h2 class="text-center">Mantenedor de Submaterias</h2>
+					<h2 class="text-center">Mantenedor de Submaterias de  <?php echo $_GET['materia'] ?></h2>
 			</div>
 			
 
@@ -163,7 +163,7 @@ $('#input-b2').fileinput({
 							
 								
 								<input type="text" class="form-control form-group" name="nsubmateria"  placeholder="Nombre Submateria" 
-								pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" required>
+								pattern="[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" required>
 
 								<input type="hidden" name="nmateria"   value="<?php echo $_GET['materia'] ?>"    >
 								
@@ -215,10 +215,10 @@ $('#input-b2').fileinput({
 			            
 			            //Modal editar 
 			            echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" >
-			            <img class="eimg" src="images/editar.svg" style="width:20px"  onclick="materiaEditar('.$row['submateria'].',\''.$row['submateria'].'\')" /></a></td>';
+			            <img class="eimg" src="images/editar.svg" style="width:20px"/></a></td>';
 			            
 			            //Eliminar
-			             echo '<td ><a  href="#"  data-href="delministro.php?idministro='.$row['submateria'].'" class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
+			             echo '<td ><a  href="#"  data-href="delsubmateria.php?materia='.$materia.'&submateria='.$row['submateria'].'" class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
 				      
 				     	 echo '</tr>';    
 				      } 
@@ -250,16 +250,16 @@ $('#input-b2').fileinput({
 				      <div class="modal-body" id="editar">
 				
 <!-- formulario editar -->
-				<form id="eministro" action="#" method="post" enctype="multipart/form-data" >
+				<form id="esubmateria" action="#" method="post" enctype="multipart/form-data" >
 					
-					<input type="hidden" id="id" >
+					<input type="hidden" id="idsub" >
 
-					<input type="text" class="form-control form-group" id="edministro" 
-					pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" placeholder="Nombre Ministro" required >
+					<input type="text" class="form-control form-group" id="edsubmateria" 
+					pattern="[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" placeholder="Nombre Submateria" required >
 
           <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-											<button type="button btn" class="btn btn-success" id="btnedtmin">Editar</button>
+											<button type="button btn" class="btn btn-success" id="btnedtsub">Editar</button>
                      <!-- <a class="btn btn-success btn-ok">Editar</a> -->
           </div>
         </form>

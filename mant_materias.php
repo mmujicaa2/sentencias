@@ -162,8 +162,11 @@ $('#input-b2').fileinput({
 				<form id="fimateria" action="ingmateria.php" method="post">
 							
 								
-								<input type="text" class="form-control form-group" name="nmateria"  placeholder="Nombre Materia" 
+								<input type="text" class="form-control form-group" name="nmateria"  placeholder="Ingres Nombre Materia Nueva" 
 								pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" required>
+
+								<input type="text" class="form-control form-group" name="nsubmateria"  placeholder="Ingrese nombre de primera submateria" 
+								pattern="[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" required>
 
 								 <div class="modal-footer">
 							       		<button type="button bnt" class="btn btn-primary">Agregar</button>
