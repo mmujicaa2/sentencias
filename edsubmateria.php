@@ -1,15 +1,15 @@
 <?php 
-// var_dump($_POST);
+ //var_dump($_POST);
  
- $id=$_POST['id'];
- $submateria= $_POST['edsubmateria'];
- 
+ $materia=$_POST['materia'];
+ $submateria= $_POST['submateria'];
+ $oldsubmateria= $_POST['oldsubmateria'];
 
 include_once('conexion/db.php');
 
-if ($_POST['id']) {
-      $qedita="UPDATE materia set submateria='$submateria' where id_materia=$id";
-
+if ($_POST['materia']) {
+      $qedita="UPDATE materia set submateria='$submateria' where materia='$materia' and submateria='$oldsubmateria' ";
+      //echo $qedita;
         if(mysqli_query($conn,$qedita)){
                    // header("Location:mant_ministros.php");
           echo "Submateria Actualizada";

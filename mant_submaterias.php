@@ -215,7 +215,7 @@ $('#input-b2').fileinput({
 			            
 			            //Modal editar 
 			            echo '<td ><a  href="#" class="edid"  data-toggle="modal" data-target="#confirm-update" >
-			            <img class="eimg" src="images/editar.svg" style="width:20px"/></a></td>';
+			            <img class="eimg" src="images/editar.svg" style="width:20px" onclick="submateriaEditar(\''.$materia.'\',\''.$row['submateria'].'\')"/></a></td>';
 			            
 			            //Eliminar
 			             echo '<td ><a  href="#"  data-href="delsubmateria.php?materia='.$materia.'&submateria='.$row['submateria'].'" class="eliminar" data-toggle="modal" data-target="#confirm-delete" ><img class="dimg" src="images/borrar.svg" style="width:20px"/></a></td>';
@@ -252,7 +252,8 @@ $('#input-b2').fileinput({
 <!-- formulario editar -->
 				<form id="esubmateria" action="#" method="post" enctype="multipart/form-data" >
 					
-					<input type="hidden" id="idsub" >
+					<input type="hidden" id="edmateria" >
+					<input type="hidden" id="oldsubmateria" >
 
 					<input type="text" class="form-control form-group" id="edsubmateria" 
 					pattern="[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" maxlength="200" placeholder="Nombre Submateria" required >

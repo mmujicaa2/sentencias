@@ -129,16 +129,16 @@ $('#btneditar2').on('click', function(e) {  //lecambie nmbre para que no se acti
 $('#btnedtsub').on('click', function(e) {
             e.preventDefault(); 
            
-            var id = $("#idsub").val();
-            var submateria = $("input#submateria").val();
-            
-             alert(id);
+            var materia = $("input#edmateria").val();
+            var submateria = $("input#edsubmateria").val();
+            var oldsubmateria = $("input#oldsubmateria").val();
 
-             alert(submateria);
-
+             //alert(materia);
+             //alert(submateria);
+             //alert(oldsubmateria);
 
          $.ajax({                        
-                    data: {id:id,submateria:submateria},
+                    data: {materia:materia,submateria:submateria,oldsubmateria:oldsubmateria},
                     url:"edsubmateria.php",
                     type:"POST",
                     // contentType: false,
@@ -149,7 +149,7 @@ $('#btnedtsub').on('click', function(e) {
                        //$('#confirm-update').modal('hide');
                        var msg = alertify.success(data);
                        msg.delay(1).setContent(data);
-                       setTimeout(function() {$('#confirm-update').modal('hide');}, 1000);
+                       setTimeout(function() {$('#confirm-update').modal('hide');}, 3000);
                        
                     }
 
@@ -279,6 +279,14 @@ function ministroEditar(id,edministro){
 
   $('#id').attr('value', id).change();
   $('#edministro').attr('value', edministro).change();
+           
+}
+ 
+function submateriaEditar(materia,submateria){
+
+  $('#edmateria').attr('value', materia).change();
+  $('#edsubmateria').attr('value', submateria).change();
+  $('#oldsubmateria').attr('value', submateria).change();
            
 }
  
